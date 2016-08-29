@@ -1,0 +1,12 @@
+
+The project wants to investigate what intersections would look like and what rules would govern them in a scenario that involves autonomous cars that move indipendently.
+Investigating this area, we would like to run some software simulations that may asnwer some of the research questions 
+
+is there the need for communication?
+	if yes, 
+		would that be better if it were centralized or de-centralized (or both to some extents)?
+		(wireless traffic signals from an external actor (centralized) or cars communicating with one another)
+			eventually, to what extent would the cars need to communicate information, instead of just sensing?
+	if no,
+		would it be enough to use sensors on the cars and apply general rules for precedence and priority in one (or more) purposely designed intersections?
+		are there intersections formats that would be more ideal than others? ( e.g. roundabouts?)
