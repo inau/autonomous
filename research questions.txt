@@ -11,4 +11,7 @@ is there the need for communication?
 		would it be enough to use sensors on the cars and apply general rules for precedence and priority in one (or more) purposely designed intersections?
 		are there intersections formats that would be more ideal than others? ( e.g. roundabouts?)
 
-Having analyzed the different alternatives, it would then be our goal to find what an optimal solution would be, optimizing throughput, in both terms of speed of and number of cars passed through the intersection.
+Having analyzed the different alternatives, it would then be our goal to find what an optimal solution would be. 
+An optimal solution could be in terms of car speed, waiting time - fairness, number of cars passed, fuel usage, gas emissions, overall traffic congestion (given that there are no collision).
+
+Given this problem definition, other aspects related to it might also be of intereset (and maybe less researched), like pedestrian handling, or fault systems that can manage obstacles, bad pavement condition or the like while still managing traffic.
