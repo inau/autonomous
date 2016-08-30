@@ -5,3 +5,40 @@ in a management perspective with the goal of improving traffic flow and safety.
 Traffic data is collected from sensors (e.g. cameras, speed sensors..) and analysed 
 in real time by a centralized Transportation Management Center, which may result in actions taken 
 with the goal of improving traffic flow.
+
+Active Traffic Management - ("smart lanes") is a method of increasing capacity and smoothing traffic flows
+in use on some busy highways. Techniques include variable speed limits, hard-shoulder running and 
+ramp-metering controlled by overhead variable message signs
+
+
+Stone et al. Austin, University of Texas
+AIM - Autonomous Intersection Management (centralized system)
+The system assigns permissions to cross the intersection to the approaching vehicles, based on their 
+trajectory on a first comes first served basis.
+
+MIT, Swiss Institute of Technology, Italian National Research Council
+Light Traffic
+Intersection management system without traffic lights, for autonomous cars.
+Cars adjust their speed approaching to the intersection, so they don't have to stop at all.
+It is a slot based system, in which cars will arrive at the intersection exactly when there is a slot
+available for them to cross it.
+
+
+
+Existing tools
+--------------
+AIM GNU General public license
+gazebo - platform for robot simulations
+
+
+open questions
+--------------
+
+what if there are both autonomous cars and human drivers involved?
+what about pedestrians?
+what about bike lanes?
+(not yet found: decenttralized approach)
+
+proposal:
+work incrementally, starting from a purely reactive system (safenet layer) and building on top of it,
+adding communication between cars, and maybe pedestrians, bikes and or other.
