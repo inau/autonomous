@@ -1,0 +1,7 @@
+
+
+Advanced Traffic Management Systems - it is a system where technology is integrated
+in a management perspective with the goal of improving traffic flow and safety.
+Traffic data is collected from sensors (e.g. cameras, speed sensors..) and analysed 
+in real time by a centralized Transportation Management Center, which may result in actions taken 
+with the goal of improving traffic flow.
