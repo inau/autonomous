@@ -1,0 +1,8 @@
+we can use this file to store our todo lists
+
+=== TODO ===
+
+for 6th of september:
+	write down what are the problems related to this area,
+	how far the research has gotten
+	what are the available tools
