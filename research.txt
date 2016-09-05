@@ -1,4 +1,5 @@
 
+++++ traffic management ++++
 
 Advanced Traffic Management Systems - it is a system where technology is integrated
 in a management perspective with the goal of improving traffic flow and safety.
@@ -10,9 +11,16 @@ Active Traffic Management - ("smart lanes") is a method of increasing capacity a
 in use on some busy highways. Techniques include variable speed limits, hard-shoulder running and 
 ramp-metering controlled by overhead variable message signs
 
+National Highway Traffic Safety Adminstration (NHTSA)
+
+++++ autonomous vehicles ++++
 
 Stone et al. Austin, University of Texas
 AIM - Autonomous Intersection Management (centralized system)
+Texas university has a Traffic management system (TMS), that is called AIM (autonomous intersection management).
+This project aim's to create a scalable, safe, and efficient multiagent framework for managing autonomous vehicles at intersections.
+However it seems as if the system does not take into acount other types of traffic than autonomous vehicles - ie. bicycles or pedestrians.
+Their AIM4 simulation tool only takes into account autonomous vehicles.
 The system assigns permissions to cross the intersection to the approaching vehicles, based on their 
 trajectory on a first comes first served basis.
 
@@ -37,8 +45,19 @@ open questions
 what if there are both autonomous cars and human drivers involved?
 what about pedestrians?
 what about bike lanes?
-(not yet found: decenttralized approach)
+in the current studies we didn't find a decentralized approach
 
-proposal:
-work incrementally, starting from a purely reactive system (safenet layer) and building on top of it,
+propositions
+------------
+
+1) work incrementally, starting from a purely reactive system (safenet layer) and building on top of it,
 adding communication between cars, and maybe pedestrians, bikes and or other.
+then compare results with aim system
+
+2) expand to thesis
+
+3) build our own centralized system, adding a different element (like human driven bikes)
+
+
+
+
