@@ -47,7 +47,7 @@ what about pedestrians?
 what about bike lanes?
 in the current studies we didn't find a decentralized approach
 
-propositions
+proposals
 ------------
 
 1) work incrementally, starting from a purely reactive system (safenet layer) and building on top of it,
