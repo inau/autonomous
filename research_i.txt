@@ -1,9 +1,0 @@
-Texas university has a Traffic management system (TMS), that is called AIM (autonomous intersection management).
-This project aim's to create a scalable, safe, and efficient multiagent framework for managing autonomous vehicles at intersections.
-
-However it seems as if the system does not take into acount other types of traffic than autonomous vehicles - ie. bicycles or pedestrians.
-Their AIM4 simulation tool only takes into account autonomous vehicles.
-
-%Uppsala University did study
-
-National Highway Traffic Safety Adminstration (NHTSA)
