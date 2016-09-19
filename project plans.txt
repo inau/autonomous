@@ -7,6 +7,10 @@ milestones:
 	1. build pure reactive cars (simulation)
 		choose tools, environment, design, do the work
 		(gazebo, game engines, java...)
+		
+		1.1 basic car model by 26/09 with all the functions to move + intersection model
+		1.2 GUI, just for testing (maybe car controls with user input just for this time)
+		1.3 basic sensoring part on the car, possibly obstacle avoidance or at least start - stop logic and right hand rule by 3/10
 
 	2. send them against each other in an intersection and measure stuff
 
