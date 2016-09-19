@@ -1,0 +1,14 @@
+
+
+milestones:
+	
+	0. chhose deadlines, so we can actually have some work done
+	
+	1. build pure reactive cars (simulation)
+		choose tools, environment, design, do the work
+		(gazebo, game engines, java...)
+
+	2. send them against each other in an intersection and measure stuff
+
+	3. communication part (to be designed)
+
