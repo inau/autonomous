@@ -17,7 +17,7 @@ public class CarController2d : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		gas = false;
+		//gas = false;
 		car.adjustSpeed ();
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
@@ -37,9 +37,20 @@ public class CarController2d : MonoBehaviour {
 		{
 			car.turnRight();
 		}
-		if (!gas) {
-			car.slowDown();
-		}
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Debug.Log("UP");
+            car.unapply_brake();
+        }
+        if(Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("DOWN");
+            car.apply_brake();
+        }
+
+//        if (!gas) {
+//			car.slowDown();
+//		}
 
 		
 	}
