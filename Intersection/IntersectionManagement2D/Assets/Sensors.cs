@@ -9,8 +9,8 @@ public class Sensors : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{	    
-//	    col = gameObject.AddComponent<CircleCollider2D>();
-//	    col.radius = 4;
+	    col = gameObject.AddComponent<CircleCollider2D>();
+	    col.radius = 4;
 	    //var rb = GetComponent<Rigidbody2D>();
 	    //rb.isKinematic = true;
         col.isTrigger = true;
@@ -23,22 +23,22 @@ public class Sensors : MonoBehaviour
         	
 	}
 
-    public void OnCollisionEnter(Collision collider)
+    public void OnCollisionEnter2D(Collision2D collison)
     {
         Debug.Log("Someone got VERY close..\n");
     }
 
-    public void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("Someone got close..\n");
     }
 
-    public void OnTriggerStay(Collider collider)
+    public void OnTriggerStay2D(Collider2D collider)
     {
         Debug.Log("Someone stays close..\n");
     }
 
-    public void OnTriggerExit(Collider collider)
+    public void OnTriggerExit2D(Collider2D collider)
     {
         Debug.Log("Someone left..\n");
     }

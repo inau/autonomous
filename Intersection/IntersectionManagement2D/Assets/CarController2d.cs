@@ -3,15 +3,16 @@ using System.Collections;
 
 public class CarController2d : MonoBehaviour {
 
-	Car2 car;
+	private Car car;
 	Rigidbody2D rigidbody2D;
-	bool gas;
+//	bool gas;
 	
 	// Use this for initialization
 	void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D>();
-		car = new Car2 (ReferencePoint.South, ReferencePoint.North, this.transform, rigidbody2D);
-		gas = false;
+		car = gameObject.AddComponent<Car> ();
+		car.setCar (ReferencePoint.South, ReferencePoint.North, this.transform, rigidbody2D);
+//		gas = false;
 	}
 	
 	
@@ -22,12 +23,12 @@ public class CarController2d : MonoBehaviour {
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
 			car.accelerate();
-			gas = true;
+//			gas = true;
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
 			car.decelerate();
-			gas = true;
+//			gas = true;
 		}
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
@@ -39,12 +40,12 @@ public class CarController2d : MonoBehaviour {
 		}
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Debug.Log("UP");
+//            Debug.Log("UP");
             car.unapply_brake();
         }
         if(Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("DOWN");
+//            Debug.Log("DOWN");
             car.apply_brake();
         }
 
