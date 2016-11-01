@@ -15,18 +15,18 @@ public class Car : MonoBehaviour {
 	public Vector2 curspeed;
 	public Sensors sensors;
 
-	public void setCar(ReferencePoint _origin, ReferencePoint _destination, Transform _transform, Rigidbody2D _rigidbody2d){
+	public void setCar(ReferencePoint _origin, ReferencePoint _destination){
 		origin = _origin;
 		destination = _destination;
-		rigidbody2D = _rigidbody2d;
+		rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.mass = _mass;
         rigidbody2D.drag = friction;
-		transform = _transform;
+		transform = GetComponent<Transform>();
 		sensors = gameObject.AddComponent<Sensors> ();
 	}
 
 	public void adjustSpeed(){
-		float delta = 0.1f;
+//		float delta = 0.1f;
 		curspeed = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y);
 
 		if (curspeed.magnitude > maxspeed)

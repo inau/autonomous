@@ -25,21 +25,21 @@ public class Sensors : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collison)
     {
-        Debug.Log("Someone got VERY close..\n");
+//        Debug.Log("Someone got VERY close..\n");
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Someone got close..\n");
+//        Debug.Log("Someone got close..\n");
     }
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log("Someone stays close..\n");
+//        Debug.Log("Someone stays close..\n");
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("Someone left..\n");
+//        Debug.Log("Someone left..\n");
     }
 }

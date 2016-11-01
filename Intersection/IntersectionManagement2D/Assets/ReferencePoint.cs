@@ -7,9 +7,9 @@ public class CoordinatesTranslator {
 	public static Vector3 translateOrigin( ReferencePoint o){
 		switch (o) {
 		case ReferencePoint.North:
-			return new Vector3(-1,4,0);
+			return new Vector3(-1,10,0);
 		case ReferencePoint.South:
-			return new Vector3(1,-4,0);
+			return new Vector3(1,-10,0);
 		case ReferencePoint.East:
 			return new Vector3(10,1,0);
 		case ReferencePoint.West:
@@ -22,9 +22,9 @@ public class CoordinatesTranslator {
 	public static Vector3 translateDestination( ReferencePoint d){
 		switch (d) {
 		case ReferencePoint.North:
-			return new Vector3(1,4,0);
+			return new Vector3(1,10,0);
 		case ReferencePoint.South:
-			return new Vector3(-1,-4,0);
+			return new Vector3(-1,-10,0);
 		case ReferencePoint.East:
 			return new Vector3(10,-1,0);
 		case ReferencePoint.West:
