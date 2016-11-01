@@ -8,9 +8,8 @@ public class Intersection : MonoBehaviour{
 
 	private int ORIGINS = 4, DESTINATIONS = 4;
 	private GameObject[] origins, destinations;
-	private int RATE = 1000000;
-	private int COUNT;
-	private int spawnRate; //number of frames
+//	public int RATE = 15;
+//	private int spawnRate; //number of frames
 
 	void Start(){
 		origins = new GameObject[ORIGINS];
@@ -20,6 +19,7 @@ public class Intersection : MonoBehaviour{
 		for (int i = 0; i < ORIGINS; i++) {
 			origins[i] = new GameObject("origin "+(i+1));
 			origins[i].AddComponent<OriginPoint>();
+			origins[i].GetComponent<OriginPoint>().setOrigin((ReferencePoint) i);
 			sr = origins[i].AddComponent<SpriteRenderer>();
 			sr.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
 			sr.color = Color.cyan;
@@ -35,18 +35,17 @@ public class Intersection : MonoBehaviour{
 			destinations[i].transform.position = CoordinatesTranslator.translateDestination(i);
 		}
 
-		COUNT = 1;
-		spawnRate = 0;
+//		spawnRate = 0;
 	}
-	void Update(){
-		if (spawnRate == 0) {
-
-			origins[(int) Random.Range(0, ORIGINS)].GetComponent<OriginPoint>().CreateCar(COUNT++);
-			
-		}
-		spawnRate++;
-		if (spawnRate >= RATE)
-			spawnRate = 0;
-	}
+//	void Update(){
+//		if (spawnRate == 0) {
+//
+//			origins[(int) Random.Range(0, ORIGINS)].GetComponent<OriginPoint>().CreateCar();
+//			
+//		}
+//		spawnRate++;
+//		if (spawnRate >= RATE)
+//			spawnRate = 0;
+//	}
 
 }

@@ -5,41 +5,42 @@ public class Sensors : MonoBehaviour
 {
 
     private CircleCollider2D col;
+	public float radius = 1.5f;
 
 	// Use this for initialization
 	void Start ()
 	{	    
 	    col = gameObject.AddComponent<CircleCollider2D>();
-	    col.radius = 4;
+	    col.radius = radius;
 	    //var rb = GetComponent<Rigidbody2D>();
 	    //rb.isKinematic = true;
         col.isTrigger = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-        
-        	
-	}
-
-    public void OnCollisionEnter2D(Collision2D collison)
-    {
-//        Debug.Log("Someone got VERY close..\n");
-    }
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-//        Debug.Log("Someone got close..\n");
-    }
+
+	}
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-//        Debug.Log("Someone stays close..\n");
+		float offset = 0.4f;
+		Vector3 origin = gameObject.transform.position;
+
+		Debug.DrawRay (origin, gameObject.transform.up * radius);
+		Debug.DrawRay (((origin + gameObject.transform.right * ((GetComponent<BoxCollider2D>().size.x / 2f ) + 0.01f))), (gameObject.transform.up + gameObject.transform.right *offset) , Color.red);
+		Debug.DrawRay (origin, (gameObject.transform.up - gameObject.transform.right * offset) * radius);
+		
+//		if(Physics2D.Raycast (gameObject.transform.position, gameObject.transform.up, radius))
+//			Debug.Log("there is something in front of the car");
+		if (Physics2D.Raycast (((origin + gameObject.transform.right * ((GetComponent<BoxCollider2D>().size.x / 2f ) + 0.01f))),
+		                       (gameObject.transform.up + gameObject.transform.right *offset), 0.1f))
+			Debug.Log ("there is something in the front-right of the car");
+//		if (Physics2D.Raycast (gameObject.transform.position, gameObject.transform.up - gameObject.transform.right *offset, radius))
+//			Debug.Log ("there is something in the front-left of the car");
     }
 
-    public void OnTriggerExit2D(Collider2D collider)
-    {
-//        Debug.Log("Someone left..\n");
-    }
+//    public void OnCollisionEnter2D(Collision2D collison)
+//    public void OnTriggerExit2D(Collider2D collider)
+
 }

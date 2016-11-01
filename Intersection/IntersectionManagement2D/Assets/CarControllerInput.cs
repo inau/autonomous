@@ -6,9 +6,8 @@ public class CarControllerInput : MonoBehaviour {
 	private Car car;
 	
 	void Start () {
-		car = gameObject.GetComponent<Car> ();
-		//		car = gameObject.AddComponent<Car> ();
-		//		car.setCar (ReferencePoint.South, ReferencePoint.North);
+		car = gameObject.AddComponent<Car> ();
+		car.setCar (ReferencePoint.South, ReferencePoint.North);
 	}
 	
 	
