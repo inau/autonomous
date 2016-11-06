@@ -12,7 +12,7 @@ public class CarController2d : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		car.adjustSpeed ();
+		car.AdjustSpeed ();
 		car.accelerate();
 
 	}

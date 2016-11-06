@@ -3,17 +3,17 @@ using System.Collections;
 
 public class CarControllerInput : MonoBehaviour {
 	
-	private Car car;
+	private ICar car;
 	
 	void Start () {
-		car = gameObject.AddComponent<Car> ();
-		car.setCar (ReferencePoint.South, ReferencePoint.North);
+		car = gameObject.GetComponent<ICar> ();
+		//car.setCar (ReferencePoint.South, ReferencePoint.North);
 	}
 	
 	
 	void FixedUpdate()
 	{
-		car.adjustSpeed ();
+		car.AdjustSpeed ();
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
 			car.accelerate();
@@ -32,11 +32,11 @@ public class CarControllerInput : MonoBehaviour {
 		}
 		if (Input.GetKeyUp(KeyCode.Space))
 		{
-			car.unapply_brake();
+			//car.unapply_brake();
 		}
 		if(Input.GetKey(KeyCode.Space))
 		{
-			car.apply_brake();
+			car.brake();
 		}
 		
 		

@@ -1,8 +1,9 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 
-public class Car : MonoBehaviour {
+public class Car : MonoBehaviour, ICar {
 	
 	Transform transform;
 	Rigidbody2D rb2D;
@@ -15,17 +16,22 @@ public class Car : MonoBehaviour {
 	public Vector2 curspeed;
 	public Sensors sensors;
 
-	public void setCar(ReferencePoint _origin, ReferencePoint _destination){
-		origin = _origin;
-		destination = _destination;
-		rb2D = GetComponent<Rigidbody2D>();
+    void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
         rb2D.mass = _mass;
         rb2D.drag = friction;
-		transform = GetComponent<Transform>();
-		sensors = gameObject.AddComponent<Sensors> ();
+        transform = GetComponent<Transform>();
+        sensors = gameObject.AddComponent<Sensors>();
+    }
+
+
+    public void setCar(ReferencePoint _origin, ReferencePoint _destination){
+		origin = _origin;
+		destination = _destination;
 	}
 
-	public void adjustSpeed(){
+	public void AdjustSpeed(){
 //		float delta = 0.1f;
 		curspeed = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
 
@@ -85,6 +91,16 @@ public class Car : MonoBehaviour {
     void reset_drag()
     {
         if (rb2D.drag < friction) rb2D.drag = friction;
+    }
+
+    public void brake()
+    {
+        apply_brake();
+    }
+
+    public Sensors GetSensors()
+    {
+        return sensors;
     }
 }
 
