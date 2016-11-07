@@ -6,8 +6,8 @@ using System.Collections;
 
 public class OriginPoint : MonoBehaviour{
 
-	public int RATE = 15;
-	public int PROB = 15; // %
+	public int RATE = 50;
+	public int PROB = 10; // %
 	private int spawnRate; //number of frames
 	
     private bool canSpawn = true;

@@ -1,4 +1,4 @@
-﻿#define _DEBUG_
+﻿//#define _DEBUG_
 
 using UnityEngine;
 using System.Collections;
@@ -6,21 +6,33 @@ using System.Collections;
 public class Sensors : MonoBehaviour
 {
     public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
-    private CircleCollider2D col;
-	public float radius = 1.5f;
-    public float side_range = 1.0f;
-    public float front_range = 1.5f;
+	private float radius;
+    public float side_range = 3.0f;
+    public float front_range = 3.0f;
+
+	private CircleCollider2D col;
     private float[] distances;
+//	private float width_offset, height_offset;
+//	private Vector3 frontL, frontR, L, R;
+	private Vector3 other;
+	private float alpha, beta, gamma, x, y; 
+	//alpha= angle between the two front vectors
+	//beta= angle between the two external ones
+	//gamma= angle between my object front and vector connecting my object to the other one
 
 	// Use this for initialization
 	void Start ()
 	{
+		radius = Mathf.Max (side_range, front_range);
         distances = new float[] { side_range, front_range, side_range };
         col = gameObject.AddComponent<CircleCollider2D>();
 	    col.radius = radius;
-	    //var rb = GetComponent<Rigidbody2D>();
-	    //rb.isKinematic = true;
         col.isTrigger = true;
+//		width_offset = (GetComponent<BoxCollider2D>().size.x / 2f) + 0.2f;
+//		height_offset = GetComponent<BoxCollider2D>().size.y / 2f;
+		// NB angles are in radiants
+		alpha = Mathf.PI / 3.0f;
+		beta = 8.0f * Mathf.PI / 9.0f ;
 	}
 
     //left, front and right
@@ -31,40 +43,77 @@ public class Sensors : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        float width_offset = (GetComponent<BoxCollider2D>().size.x / 2f) + 0.2f;
-        float height_offset = GetComponent<BoxCollider2D>().size.y / 2f;
-
-        Vector3 origin = gameObject.transform.position;
-        Vector3 left = (origin + gameObject.transform.right * width_offset),
-                right = (origin - gameObject.transform.right * width_offset);
-
-		if (collider == collider.gameObject.GetComponent<CircleCollider2D>()){
+        
+		if (collider == collider.gameObject.GetComponent<CircleCollider2D>() || collider.gameObject.layer != SceneVars.streetLayer){
 			return;
 		}
-#if _DEBUG_
-        Debug.DrawRay (origin + (gameObject.transform.up * height_offset), gameObject.transform.up * front_range);
-		Debug.DrawRay (left, (gameObject.transform.up + gameObject.transform.right * side_range));
-		Debug.DrawRay (right, (gameObject.transform.up - gameObject.transform.right * side_range));
-#endif
 
-        RaycastHit2D l,f,r;
-        int streetlayer = LayerMask.GetMask("Street");
-        if (f = Physics2D.Raycast(origin + (transform.up * height_offset), gameObject.transform.up, front_range, streetlayer))
-        {
-            distances[(int)SensorDirection.FRONT] = Vector2.Distance(f.point, origin + (transform.up * height_offset));
-        }
-        else distances[(int)SensorDirection.FRONT] = front_range;
-        if (r = Physics2D.Raycast(right, gameObject.transform.up + gameObject.transform.right, side_range, streetlayer))
-        {
-            distances[(int)SensorDirection.RIGHT] = Vector2.Distance(r.point, right);
-        }
-        else distances[(int)SensorDirection.RIGHT] = side_range;
-        
-        if (l = Physics2D.Raycast(left, gameObject.transform.up - gameObject.transform.right, side_range, streetlayer))
-        {
-            distances[(int)SensorDirection.LEFT] = Vector2.Distance(l.point, left);
-        }
-        else distances[(int)SensorDirection.LEFT] = side_range;
+//		x = transform.up.x;
+//		y = transform.up.y;
+//		frontR = new Vector3 (x * Mathf.Cos (alpha / 2.0f) + y * Mathf.Sin (alpha / 2.0f), -x * Mathf.Sin (alpha / 2.0f) + y * Mathf.Cos (alpha / 2.0f), 0);
+//		R = new Vector3(x * Mathf.Cos(beta/2.0f) + y * Mathf.Sin(beta/2.0f), -x*Mathf.Sin (beta/2.0f) + y*Mathf.Cos (beta/2.0f), 0);
+//		frontL = new Vector3 (x * Mathf.Cos (- alpha / 2.0f) + y * Mathf.Sin (- alpha / 2.0f), -x * Mathf.Sin (- alpha / 2.0f) + y * Mathf.Cos (- alpha / 2.0f), 0);
+//		L = new Vector3 (x * Mathf.Cos (- beta / 2.0f) + y * Mathf.Sin (- beta / 2.0f), -x * Mathf.Sin (- beta / 2.0f) + y * Mathf.Cos (- beta / 2.0f), 0);
+		other = collider.gameObject.transform.position - transform.position;
+
+		#if _DEBUG_
+//		Debug.DrawRay( transform.position, transform.up * radius, Color.red);
+//		Debug.DrawRay( transform.position, frontR * radius);
+//		Debug.DrawRay( transform.position, frontL * radius);
+//		Debug.DrawRay( transform.position, R * radius);
+//		Debug.DrawRay( transform.position, L * radius);
+		#endif
+
+		gamma = Mathf.Acos (Vector3.Dot (transform.up.normalized, other.normalized));
+
+		if (gamma <= beta / 2 ) {
+			if (gamma <= alpha / 2 ) {
+				#if _DEBUG_
+				Debug.Log ("FRONT dist: " + other.magnitude);
+				Debug.DrawRay( transform.position, other, Color.green);
+				#endif
+				distances[(int)SensorDirection.FRONT] = other.magnitude;
+			} else {
+				#if _DEBUG_
+				Debug.DrawRay( transform.position, other, Color.yellow);
+				Debug.Log ("SIDE dist: " + other.magnitude);
+				#endif
+				if (Vector3.Dot(transform.up, other) > 0){
+					distances[(int)SensorDirection.RIGHT] = other.magnitude;
+				}else {
+					distances[(int)SensorDirection.LEFT] = other.magnitude;
+				}
+			}
+		}
+//		Debug.Log (distances[0] + " " + distances[1] + " " + distances[2]);
+
+
+		//		front = gameObject.transform.position + (gameObject.transform.up * height_offset);
+		//		left = (gameObject.transform.position + gameObject.transform.right * width_offset);
+		//        right = (gameObject.transform.position - gameObject.transform.right * width_offset);
+		//
+//#if _DEBUG_
+//        Debug.DrawRay (front, gameObject.transform.up * front_range);
+//		Debug.DrawRay (left, (gameObject.transform.up + gameObject.transform.right * side_range));
+//		Debug.DrawRay (right, (gameObject.transform.up - gameObject.transform.right * side_range));
+//#endif       
+//        streetlayer = LayerMask.GetMask("Street");
+//        if (f = Physics2D.Raycast(front, gameObject.transform.up, front_range, streetlayer))
+//        {
+//            distances[(int)SensorDirection.FRONT] = Vector2.Distance(f.point, front);
+//        }
+//        else distances[(int)SensorDirection.FRONT] = front_range;
+//        if (r = Physics2D.Raycast(right, gameObject.transform.up + gameObject.transform.right, side_range, streetlayer))
+//        {
+//            distances[(int)SensorDirection.RIGHT] = Vector2.Distance(r.point, right);
+//        }
+//        else distances[(int)SensorDirection.RIGHT] = side_range;
+//        
+//        if (l = Physics2D.Raycast(left, gameObject.transform.up - gameObject.transform.right, side_range, streetlayer))
+//        {
+//            distances[(int)SensorDirection.LEFT] = Vector2.Distance(l.point, left);
+//        }
+//        else distances[(int)SensorDirection.LEFT] = side_range;
         
     }
 

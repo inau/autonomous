@@ -26,8 +26,7 @@ public class CarModel : MonoBehaviour, ICar {
         curspeed = new Vector2(rb.velocity.x, rb.velocity.y);
         if (curspeed.magnitude > maxspeed)
         {
-            curspeed = curspeed.normalized;
-            curspeed *= maxspeed;
+            curspeed = curspeed.normalized * maxspeed;
         }
     }
 
@@ -43,8 +42,11 @@ public class CarModel : MonoBehaviour, ICar {
 
     public void brake()
     {
+		Debug.Log ("brake");
+
         if (curspeed.magnitude > 0)
-            rb.AddForce( (-transform.up) * acceleration );
+			rb.velocity *= 0.5f;//0.95f;
+//            rb.AddForce( (-transform.up) * acceleration );
     }
 
     public void turnLeft()
