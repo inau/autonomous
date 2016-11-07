@@ -6,27 +6,42 @@ public class ReactiveController : MonoBehaviour {
     private CarModel car;
     private Sensors data;
     private ReferencePoint origin, destination;
+    private float[] prev = { 0f, 0f, 0f };
 
     void Start()
     {
         car = gameObject.GetComponent<CarModel>();
-        data = gameObject.GetComponent<Sensors>();
+        data = car.GetSensors();
     }
 
 
     void FixedUpdate()
     {
-        if (data == null) car.GetSensors();
+        if (data == null) data = car.GetSensors();
         car.AdjustSpeed();
 
         //Reactive logic
         float[] dists = data.getDistances();
-        //   Debug.Log(dists[0] + " " + dists[1] + " " + dists[2]);
-        if (dists[(int)Sensors.SensorDirection.FRONT] < 1.40f ||
-            dists[(int)Sensors.SensorDirection.LEFT] < .30f ||
-            dists[(int)Sensors.SensorDirection.RIGHT] < .30f) { }
-        //car.brake();
-        else car.accelerate();
+        if ( prev[0] == -1 ) prev = dists;
+
+        //new val
+        var dfront = dists[(int)Sensors.SensorDirection.FRONT] - prev[(int)Sensors.SensorDirection.FRONT];
+        if (dfront >= 0)
+        {
+            //increasing distance to front
+            car.accelerate();
+        } 
+        else if(dfront < 0 )
+        {
+            //decreasing distance to front
+            car.decelerate();
+        }
+
+        //update distances for next iteration
+        prev = dists;
+
+        // emergency brake
+        if (dists[(int)Sensors.SensorDirection.FRONT] < .40f) car.brake();
 
     }
 
