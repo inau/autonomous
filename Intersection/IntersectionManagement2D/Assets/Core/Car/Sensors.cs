@@ -38,6 +38,9 @@ public class Sensors : MonoBehaviour
         Vector3 left = (origin + gameObject.transform.right * width_offset),
                 right = (origin - gameObject.transform.right * width_offset);
 
+		if (collider == collider.gameObject.GetComponent<CircleCollider2D>()){
+			return;
+		}
 #if _DEBUG_
         Debug.DrawRay (origin + (gameObject.transform.up * height_offset), gameObject.transform.up * front_range);
 		Debug.DrawRay (left, (gameObject.transform.up + gameObject.transform.right * side_range));
