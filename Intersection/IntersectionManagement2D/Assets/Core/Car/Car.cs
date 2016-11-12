@@ -25,6 +25,9 @@ public class Car : MonoBehaviour, ICar {
         sensors = gameObject.AddComponent<Sensors>();
     }
 
+	public int GetID(){
+		return gameObject.GetInstanceID ();
+	}
 
     public void setCar(ReferencePoint _origin, ReferencePoint _destination){
 		origin = _origin;
@@ -97,6 +100,9 @@ public class Car : MonoBehaviour, ICar {
     {
         apply_brake();
     }
+	public void slowbrake(){
+		apply_brake ();
+	}
 
     public Sensors GetSensors()
     {

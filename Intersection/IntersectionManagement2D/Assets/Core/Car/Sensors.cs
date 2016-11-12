@@ -2,89 +2,107 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Sensors : MonoBehaviour
 {
-    public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
-	private float radius;
+	public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
+	public float radius;
     public float side_range = 3.0f;
     public float front_range = 3.0f;
 
 	private CircleCollider2D col;
-    private float[] distances;
+	public Vector2[] distances;
+	public float[] deltas;
 //	private float width_offset, height_offset;
-//	private Vector3 frontL, frontR, L, R;
+	private Vector3 frontL, frontR, L, R;
 	private Vector3 other;
 	private float alpha, beta, gamma, x, y; 
 	//alpha= angle between the two front vectors
 	//beta= angle between the two external ones
 	//gamma= angle between my object front and vector connecting my object to the other one
 
-	// Use this for initialization
 	void Start ()
 	{
 		radius = Mathf.Max (side_range, front_range);
-        distances = new float[] { side_range, front_range, side_range };
+        distances = new Vector2[] { new Vector2(-1f, side_range), new Vector2(-1f, front_range), new Vector2(-1f, side_range) };
+		deltas = new float[]{side_range, front_range, side_range};
         col = gameObject.AddComponent<CircleCollider2D>();
 	    col.radius = radius;
         col.isTrigger = true;
 //		width_offset = (GetComponent<BoxCollider2D>().size.x / 2f) + 0.2f;
 //		height_offset = GetComponent<BoxCollider2D>().size.y / 2f;
 		// NB angles are in radiants
-		alpha = Mathf.PI / 3.0f;
-		beta = 8.0f * Mathf.PI / 9.0f ;
+		alpha = Mathf.PI / 4;
+		beta = 8 * Mathf.PI / 9  ;
 	}
 
     //left, front and right
-    public float[] getDistances()
+    public Vector2[] getDistances()
     {
         return distances;
     }
+	public float[] getDeltas(){
+		return deltas;
+	}
 
     public void OnTriggerStay2D(Collider2D collider)
     {
         
-		if (collider == collider.gameObject.GetComponent<CircleCollider2D>() || collider.gameObject.layer != SceneVars.streetLayer){
+		if (collider == collider.gameObject.GetComponent<CircleCollider2D> () || collider.gameObject.layer != SceneVars.streetLayer) {
 			return;
 		}
 
-//		x = transform.up.x;
-//		y = transform.up.y;
-//		frontR = new Vector3 (x * Mathf.Cos (alpha / 2.0f) + y * Mathf.Sin (alpha / 2.0f), -x * Mathf.Sin (alpha / 2.0f) + y * Mathf.Cos (alpha / 2.0f), 0);
-//		R = new Vector3(x * Mathf.Cos(beta/2.0f) + y * Mathf.Sin(beta/2.0f), -x*Mathf.Sin (beta/2.0f) + y*Mathf.Cos (beta/2.0f), 0);
-//		frontL = new Vector3 (x * Mathf.Cos (- alpha / 2.0f) + y * Mathf.Sin (- alpha / 2.0f), -x * Mathf.Sin (- alpha / 2.0f) + y * Mathf.Cos (- alpha / 2.0f), 0);
-//		L = new Vector3 (x * Mathf.Cos (- beta / 2.0f) + y * Mathf.Sin (- beta / 2.0f), -x * Mathf.Sin (- beta / 2.0f) + y * Mathf.Cos (- beta / 2.0f), 0);
 		other = collider.gameObject.transform.position - transform.position;
 
 		#if _DEBUG_
-//		Debug.DrawRay( transform.position, transform.up * radius, Color.red);
-//		Debug.DrawRay( transform.position, frontR * radius);
-//		Debug.DrawRay( transform.position, frontL * radius);
-//		Debug.DrawRay( transform.position, R * radius);
-//		Debug.DrawRay( transform.position, L * radius);
+		x = transform.up.x;
+		y = transform.up.y;
+		frontR = new Vector3 (x * Mathf.Cos (alpha / 2.0f) + y * Mathf.Sin (alpha / 2.0f), -x * Mathf.Sin (alpha / 2.0f) + y * Mathf.Cos (alpha / 2.0f), 0);
+		R = new Vector3(x * Mathf.Cos(beta/2.0f) + y * Mathf.Sin(beta/2.0f), -x*Mathf.Sin (beta/2.0f) + y*Mathf.Cos (beta/2.0f), 0);
+		frontL = new Vector3 (x * Mathf.Cos (- alpha / 2.0f) + y * Mathf.Sin (- alpha / 2.0f), -x * Mathf.Sin (- alpha / 2.0f) + y * Mathf.Cos (- alpha / 2.0f), 0);
+		L = new Vector3 (x * Mathf.Cos (- beta / 2.0f) + y * Mathf.Sin (- beta / 2.0f), -x * Mathf.Sin (- beta / 2.0f) + y * Mathf.Cos (- beta / 2.0f), 0);
+
+		Debug.DrawRay( transform.position, transform.up * radius, Color.red);
+		Debug.DrawRay( transform.position, frontR * radius);
+		Debug.DrawRay( transform.position, frontL * radius);
+		Debug.DrawRay( transform.position, R * radius);
+		Debug.DrawRay( transform.position, L * radius);
 		#endif
 
 		gamma = Mathf.Acos (Vector3.Dot (transform.up.normalized, other.normalized));
 
-		if (gamma <= beta / 2 ) {
-			if (gamma <= alpha / 2 ) {
+		if (gamma <= beta / 2) {
+			if (gamma <= alpha / 2) {
 				#if _DEBUG_
 				Debug.Log ("FRONT dist: " + other.magnitude);
 				Debug.DrawRay( transform.position, other, Color.green);
 				#endif
-				distances[(int)SensorDirection.FRONT] = other.magnitude;
+				updateDistance ((int)SensorDirection.FRONT, (float)collider.gameObject.GetComponent<CarModel> ().GetID (), other.magnitude);
 			} else {
 				#if _DEBUG_
 				Debug.DrawRay( transform.position, other, Color.yellow);
 				Debug.Log ("SIDE dist: " + other.magnitude);
 				#endif
-				if (Vector3.Dot(transform.up, other) > 0){
-					distances[(int)SensorDirection.RIGHT] = other.magnitude;
-				}else {
-					distances[(int)SensorDirection.LEFT] = other.magnitude;
+				if (Vector3.Dot (transform.up, other) > 0) {
+					updateDistance ((int)SensorDirection.RIGHT, (float)collider.gameObject.GetComponent<CarModel> ().GetID (), other.magnitude);
+				} else {
+					updateDistance ((int)SensorDirection.LEFT, (float)collider.gameObject.GetComponent<CarModel> ().GetID (), other.magnitude);
 				}
 			}
+		} else {
+			resetDistances (collider.gameObject.GetComponent<CarModel> ().GetID ());
 		}
+	}
+
+	void updateDistance(int index, float id, float newdist){
+		if(id == distances[index].x || newdist < distances[index].y){
+			deltas[index] = newdist - distances[index].y;
+			distances[index] = new Vector2(id, newdist);
+		}
+
+	}
+
 //		Debug.Log (distances[0] + " " + distances[1] + " " + distances[2]);
 
 
@@ -114,7 +132,30 @@ public class Sensors : MonoBehaviour
 //            distances[(int)SensorDirection.LEFT] = Vector2.Distance(l.point, left);
 //        }
 //        else distances[(int)SensorDirection.LEFT] = side_range;
-        
-    }
+//        
+//    }
+
+	void OnTriggerExit2D(Collider2D collider){
+		if (collider.gameObject.layer != SceneVars.streetLayer) {
+			return;
+		}
+		resetDistances (collider.gameObject.GetComponent<CarModel> ().GetID ());
+	}
+
+	void resetDistances(int id){
+		for (int i = 0; i < distances.Length; i++) {
+			if (distances[i].x == (float) id){
+				deltas[i] = 0;
+				distances[i].y = radius;
+			}
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.layer == SceneVars.streetLayer)
+			Intersection.increaseCollisions ();
+		else if (col.gameObject.GetComponent<DestinationPoint> ())
+			Intersection.increaseArrived ();
+	}
 
 }

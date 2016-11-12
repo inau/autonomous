@@ -8,13 +8,31 @@ public class Intersection : MonoBehaviour{
 
 	private int ORIGINS = 4, DESTINATIONS = 4;
 	private GameObject[] origins, destinations;
+	static private int cCount = 0;
+	static private int aCount = 0;
+	static private int oCount = 0;
+	public int collisions;
+	public int arrived;
+	public int created;
 //	public int RATE = 15;
 //	private int spawnRate; //number of frames
 
+	static public void increaseCollisions(){
+		cCount++;
+	}
+	static public void increaseArrived(){
+		aCount++;
+	}
+	static public void increaseCreated(){
+		oCount++;
+	}
 	void Start(){
 		origins = new GameObject[ORIGINS];
 		destinations = new GameObject[DESTINATIONS];
 		SpriteRenderer sr;
+		collisions = Intersection.cCount;
+		arrived = Intersection.aCount;
+		created = Intersection.oCount;
 
 		for (int i = 0; i < ORIGINS; i++) {
 			origins[i] = new GameObject("origin "+(i+1));
@@ -37,7 +55,11 @@ public class Intersection : MonoBehaviour{
 
 //		spawnRate = 0;
 	}
-//	void Update(){
+	void Update(){
+		collisions = Intersection.cCount / 2;
+		arrived = Intersection.aCount;
+		created = Intersection.oCount;
+	}
 //		if (spawnRate == 0) {
 //
 //			origins[(int) Random.Range(0, ORIGINS)].GetComponent<OriginPoint>().CreateCar();

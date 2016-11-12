@@ -8,6 +8,8 @@ public interface ICar {
     void brake();
     void turnLeft();
     void turnRight();
+	void slowbrake();
+	int GetID();
 
     Sensors GetSensors();
 }

@@ -6,51 +6,49 @@ public class ReactiveController : MonoBehaviour {
     private CarModel car;
     private Sensors data;
     private ReferencePoint origin, destination;
-    private float[] prev;
-	private float[] dists;
+    private Vector2[] dists;
+	private float[] deltas;
 	private float dfront, dleft, dright;
 
     void Start()
     {
         car = gameObject.GetComponent<CarModel>();
         data = car.GetSensors();
-		prev = null;
     }
 
 
     void FixedUpdate()
     {
-        if (data == null) data = car.GetSensors();
-        car.AdjustSpeed();
-		if (prev == null) prev = data.getDistances();
+		if (data == null)
+			data = car.GetSensors ();
+		car.AdjustSpeed ();
 
-        //Reactive logic
-        dists = data.getDistances();
+		//Reactive logic
+		dists = data.getDistances ();
+		deltas = data.getDeltas ();
 
-		Debug.Log ( (dists[0] == prev[0]) + " " + (dists[1] == prev[1]) + " " + (dists[2]==prev[2]) );
+		dfront = deltas [(int)Sensors.SensorDirection.FRONT];
+		dleft = deltas [(int)Sensors.SensorDirection.LEFT];
+		dright = deltas [(int)Sensors.SensorDirection.RIGHT];
 
-        //new val
-        dfront = dists[(int)Sensors.SensorDirection.FRONT] - prev[(int)Sensors.SensorDirection.FRONT];
-		dleft = dists[(int)Sensors.SensorDirection.LEFT] - prev[(int)Sensors.SensorDirection.LEFT];
-		dright = dists[(int)Sensors.SensorDirection.RIGHT] - prev[(int)Sensors.SensorDirection.RIGHT];
 
-//		Debug.Log (dfront + " " + dleft + " " + dright);
-		if (dfront < 0 || dleft < 0 || dright < 0){
-//			car.decelerate();
-			Debug.Log(" too close! ");
-			car.brake();
-		} else if ( dfront >=0 ){
-			car.accelerate();
+		// emergency brake
+		if (dists [(int)Sensors.SensorDirection.FRONT].y < 1.5) {
+			car.brake ();
+			return;
+		}
+		if (dfront >= 0) {
+			car.accelerate ();
+			return;
 		}
 
-        //update distances for next iteration
-        //prev = dists;
-		prev [0] = dists [0];
-		prev [1] = dists [1];
-		prev [2] = dists [2];
+		if (dfront < 0 || dleft < 0 || dright < 0){
+			car.slowbrake();	
+//			Debug.Log(" too close! ");
+//			car.brake();
+		} 
 
-        // emergency brake
-        if (dists[(int)Sensors.SensorDirection.FRONT] < 1.5f) car.brake();
+
 
     }
 

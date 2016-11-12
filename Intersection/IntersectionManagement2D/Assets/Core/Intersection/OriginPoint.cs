@@ -6,8 +6,8 @@ using System.Collections;
 
 public class OriginPoint : MonoBehaviour{
 
-	public int RATE = 50;
-	public int PROB = 10; // %
+	public int RATE = 30;
+	public int PROB = 20; // %
 	private int spawnRate; //number of frames
 	
     private bool canSpawn = true;
@@ -18,22 +18,41 @@ public class OriginPoint : MonoBehaviour{
 	Rigidbody2D rb2d;
 	Texture2D txt;
 	ICar car;
+	CircleCollider2D circle;
 
 	void Start(){
 		spawnRate = Random.Range(0,RATE);
+		circle = gameObject.AddComponent<CircleCollider2D> ();
+		circle.isTrigger = true;
+		circle.radius = 1f;
 	}
 
 	void Update(){
 		if (spawnRate%RATE == 0) {
 			if (Random.Range (0, 100) < PROB && canSpawn) {
-                canSpawn = false;
-
-                CreateCarFromPrefab();
+//                canSpawn = false;
+				if (canSpawn){
+					canSpawn = false;
+	                CreateCarFromPrefab();
+				}
 			}
 		}
 		spawnRate++;
     }
 
+	void OnTriggerEnter2D(Collider2D col){
+		if (col == col.gameObject.GetComponent<CircleCollider2D> () || col.gameObject.layer != SceneVars.streetLayer) {
+			return;
+		}
+		canSpawn = false;
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		if (col == col.gameObject.GetComponent<CircleCollider2D> () || col.gameObject.layer != SceneVars.streetLayer) {
+			return;
+		}
+		canSpawn = true;
+	}
 
 	public void setOrigin(ReferencePoint _origin){
 		origin = _origin;
@@ -41,8 +60,10 @@ public class OriginPoint : MonoBehaviour{
 	
     public void CreateCarFromPrefab()
     {
+		Intersection.increaseCreated ();
         GameObject go = Instantiate(Resources.Load("prefab/CarPrefab")) as GameObject;
         car = go.GetComponent<CarModel>();
+		go.name = "Car" + car.GetID ();
         ReactiveController rc = go.GetComponent<ReactiveController>();
         rc.setRoute(origin, (ReferencePoint)Random.Range(0, 3));
         
@@ -50,7 +71,7 @@ public class OriginPoint : MonoBehaviour{
         go.transform.Rotate(CoordinatesTranslator.getInitialRotation(origin));
         go.transform.position = this.transform.position;
 
-        canSpawn = true;
+//        canSpawn = true;
     }
     public void CreateCar(){
 		newCar = new GameObject("Car");
