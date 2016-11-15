@@ -6,7 +6,7 @@ public class ReactiveController : MonoBehaviour {
     private CarModel car;
     private Sensors data;
     private ReferencePoint origin, destination;
-    private Vector2[] dists;
+    private DistanceStruct[] dists;
 	private float[] deltas;
 	private float dfront, dleft, dright;
 
@@ -33,7 +33,7 @@ public class ReactiveController : MonoBehaviour {
 
 
 		// emergency brake
-		if (dists [(int)Sensors.SensorDirection.FRONT].y < 1.5) {
+		if (dists [(int)Sensors.SensorDirection.FRONT].dist < 1.5) {
 			car.brake ();
 			return;
 		}

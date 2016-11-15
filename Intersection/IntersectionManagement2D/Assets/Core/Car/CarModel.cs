@@ -18,6 +18,9 @@ public class CarModel : MonoBehaviour, ICar {
     public float friction;
     private Sensors sensors;
 
+//	private float g = 9.8f;//gravitational acc
+//	private float mu = 0.7f;//coeff friction brakes
+
 	private float angDrag = 10;
 
     private Rigidbody2D rb;
@@ -61,14 +64,13 @@ public class CarModel : MonoBehaviour, ICar {
 
 	public void slowbrake(){
 		if (curspeed.magnitude > 0)
-			rb.velocity *= 0.95f;
+			rb.velocity *= 0.96f;
 	}
 
     public void brake()
     {
         if (curspeed.magnitude > 0)
-			rb.velocity *= 0.5f;
-//            rb.AddForce( (-transform.up) * acceleration );
+			rb.velocity *=0.7f;
     }
 
     public void turnLeft()

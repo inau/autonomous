@@ -4,6 +4,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public class DistanceStruct{
+	public float id;
+	public float dist;
+	public DistanceStruct(float _id, float _dist){
+		id = _id;
+		dist = _dist;
+	}
+}
+
 public class Sensors : MonoBehaviour
 {
 	public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
@@ -12,7 +21,7 @@ public class Sensors : MonoBehaviour
     public float front_range = 3.0f;
 
 	private CircleCollider2D col;
-	public Vector2[] distances;
+	public DistanceStruct[] distances;
 	public float[] deltas;
 //	private float width_offset, height_offset;
 	private Vector3 frontL, frontR, L, R;
@@ -25,7 +34,7 @@ public class Sensors : MonoBehaviour
 	void Start ()
 	{
 		radius = Mathf.Max (side_range, front_range);
-        distances = new Vector2[] { new Vector2(-1f, side_range), new Vector2(-1f, front_range), new Vector2(-1f, side_range) };
+        distances = new DistanceStruct[] { new DistanceStruct(-1f, side_range), new DistanceStruct(-1f, front_range), new DistanceStruct(-1f, side_range) };
 		deltas = new float[]{side_range, front_range, side_range};
         col = gameObject.AddComponent<CircleCollider2D>();
 	    col.radius = radius;
@@ -38,7 +47,7 @@ public class Sensors : MonoBehaviour
 	}
 
     //left, front and right
-    public Vector2[] getDistances()
+    public DistanceStruct[] getDistances()
     {
         return distances;
     }
@@ -96,9 +105,9 @@ public class Sensors : MonoBehaviour
 	}
 
 	void updateDistance(int index, float id, float newdist){
-		if(id == distances[index].x || newdist < distances[index].y){
-			deltas[index] = newdist - distances[index].y;
-			distances[index] = new Vector2(id, newdist);
+		if(id == distances[index].id || newdist < distances[index].dist){
+			deltas[index] = newdist - distances[index].dist;
+			distances[index] = new DistanceStruct(id, newdist);
 		}
 
 	}
@@ -144,9 +153,9 @@ public class Sensors : MonoBehaviour
 
 	void resetDistances(int id){
 		for (int i = 0; i < distances.Length; i++) {
-			if (distances[i].x == (float) id){
+			if (distances[i].id == (float) id){
 				deltas[i] = 0;
-				distances[i].y = radius;
+				distances[i].dist = radius;
 			}
 		}
 	}
