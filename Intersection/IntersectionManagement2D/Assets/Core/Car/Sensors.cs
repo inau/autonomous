@@ -34,7 +34,7 @@ public class Sensors : MonoBehaviour
 //		height_offset = GetComponent<BoxCollider2D>().size.y / 2f;
 		// NB angles are in radiants
 		alpha = Mathf.PI / 4;
-		beta = 8 * Mathf.PI / 9  ;
+		beta = Mathf.PI;
 	}
 
     //left, front and right
