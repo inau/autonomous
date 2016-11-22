@@ -20,6 +20,7 @@ public class CleanupCars : MonoBehaviour {
     void OnTriggerExit2D(Collider2D collider)
     {
         Destroy(collider.gameObject);
+		Intersection.increaseLost ();
     }
 
 }

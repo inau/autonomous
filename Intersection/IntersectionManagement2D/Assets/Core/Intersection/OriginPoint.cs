@@ -65,7 +65,7 @@ public class OriginPoint : MonoBehaviour{
         car = go.GetComponent<CarModel>();
 		go.name = "Car" + car.GetID ();
         ReactiveController rc = go.GetComponent<ReactiveController>();
-        rc.setRoute(origin, (ReferencePoint)Random.Range(0, 3));
+        rc.setRoute(origin, ReferencePointUtil.getRandomDest(origin)); //no U turns
         
         //rotation
         go.transform.Rotate(CoordinatesTranslator.getInitialRotation(origin));
@@ -73,6 +73,7 @@ public class OriginPoint : MonoBehaviour{
 
 //        canSpawn = true;
     }
+
 //    public void CreateCar(){
 //		newCar = new GameObject("Car");
 //		newCar.layer = SceneVars.streetLayer;

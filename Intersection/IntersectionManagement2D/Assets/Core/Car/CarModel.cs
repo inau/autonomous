@@ -9,13 +9,14 @@ public class CarModel : MonoBehaviour, ICar {
 			return current++;
 		}
 	}
-
+	//defaults in prefab
 	public int ID;
-    public float acceleration;
-    public float maxspeed;
+    public float acceleration; 
+    public float maxspeed; 
     public float turnpower;
     public float mass;
     public float friction;
+
     private Sensors sensors;
 
 //	private float g = 9.8f;//gravitational acc
@@ -24,7 +25,6 @@ public class CarModel : MonoBehaviour, ICar {
 	private float angDrag = 10;
 
     private Rigidbody2D rb;
-    private Vector2 curspeed;
 
 	void Awake(){
 		ID = id_gen.nextid ();
@@ -45,10 +45,9 @@ public class CarModel : MonoBehaviour, ICar {
 	// Should be called every frame to max out speed
 	public void AdjustSpeed () {
 
-        curspeed = new Vector2(rb.velocity.x, rb.velocity.y);
-        if (curspeed.magnitude > maxspeed)
+        if (rb.velocity.magnitude > maxspeed)
         {
-            curspeed = curspeed.normalized * maxspeed;
+            rb.velocity = rb.velocity.normalized * maxspeed;
         }
     }
 
@@ -63,19 +62,19 @@ public class CarModel : MonoBehaviour, ICar {
     }
 
 	public void slowbrake(){
-		if (curspeed.magnitude > 0)
+		if (rb.velocity.magnitude > 0)
 			rb.velocity *= 0.96f;
 	}
 
     public void brake()
     {
-        if (curspeed.magnitude > 0)
+        if (rb.velocity.magnitude > 0)
 			rb.velocity *=0.7f;
     }
 
     public void turnLeft()
     {
-        if (curspeed.magnitude > 0.1)
+        if (rb.velocity.magnitude > 0)
         {
 			rb.angularDrag = 0;
             transform.Rotate(Vector3.forward * turnpower);
@@ -86,7 +85,7 @@ public class CarModel : MonoBehaviour, ICar {
 
     public void turnRight()
     {
-        if (curspeed.magnitude > 0.1)
+        if (rb.velocity.magnitude > 0)
         {
 			rb.angularDrag = 0;
             transform.Rotate(Vector3.forward * -turnpower);

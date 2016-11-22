@@ -9,13 +9,15 @@ public class Intersection : MonoBehaviour{
 	public static Vector3 center = new Vector3(0,0,0);
 	private int ORIGINS = 4, DESTINATIONS = 4;
 	private GameObject[] origins, destinations;
-	private Graph graph;
+	public Graph graph;
 	static private int cCount = 0;
 	static private int aCount = 0;
 	static private int oCount = 0;
+	static private int lCount = 0;
 	public int collisions;
 	public int arrived;
 	public int created;
+	public int lost;
 
 //	public int RATE = 15;
 //	private int spawnRate; //number of frames
@@ -29,6 +31,9 @@ public class Intersection : MonoBehaviour{
 	static public void increaseCreated(){
 		oCount++;
 	}
+	static public void increaseLost(){
+		lCount++;
+	}
 	void Start(){
 		origins = new GameObject[ORIGINS];
 		destinations = new GameObject[DESTINATIONS];
@@ -36,9 +41,10 @@ public class Intersection : MonoBehaviour{
 		collisions = Intersection.cCount;
 		arrived = Intersection.aCount;
 		created = Intersection.oCount;
+		lost = Intersection.lCount;
 		graph = new Graph ();
 
-		return;
+//		return;
 
 		for (int i = 0; i < ORIGINS; i++) {
 			origins[i] = new GameObject("origin "+(i+1));
@@ -65,6 +71,7 @@ public class Intersection : MonoBehaviour{
 		collisions = Intersection.cCount / 2;
 		arrived = Intersection.aCount;
 		created = Intersection.oCount;
+		lost = Intersection.lCount;
 	}
 //		if (spawnRate == 0) {
 //
