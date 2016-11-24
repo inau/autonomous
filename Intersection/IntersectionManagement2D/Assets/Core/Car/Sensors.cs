@@ -22,7 +22,7 @@ public class Sensors : MonoBehaviour
 	public float radius = 3.0f;
 	public DistanceStruct[] distances = new DistanceStruct[3];
 	public float[] deltas;
-	public float rightDelta;
+	public float rightDelta, rightDist;
 
 	private CircleCollider2D col;
 	private Vector3 frontL, frontR, L, R, rightHand;
@@ -32,11 +32,11 @@ public class Sensors : MonoBehaviour
 	//beta= angle between the two external ones
 	//gamma= angle between my object front and vector connecting my object to the other one
 	private bool triggered = false;
-	private Collider2D otherCollider = null;
+	private Collider2D otherCollider = null, tmpCol;
 	private RaycastHit2D hitF, hitFR, hitFL, hitR;
 	private float defaultID = -1f;
 	private float height_offset, width_offset;
-	private float rightDist;
+	private float minDist;
 
 
 	void Start ()
@@ -57,8 +57,8 @@ public class Sensors : MonoBehaviour
 		beta = Mathf.PI;
 		rightHandAngle = Mathf.PI / 4;
 
-		width_offset = (GetComponent<BoxCollider2D>().size.x / 2f) - 0.1f;
 		height_offset = GetComponent<BoxCollider2D>().size.y / 2f;
+		width_offset = (GetComponent<BoxCollider2D>().size.x / 2f);
 
 		//TODO remove
 		ds = new Vector2[3];
@@ -75,8 +75,14 @@ public class Sensors : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        
-		if (collider == collider.gameObject.GetComponent<CircleCollider2D> () || collider.gameObject.layer != SceneVars.streetLayer) {
+		if (collider.gameObject.GetComponent<TrafficLight>()){
+			if(collider.gameObject.GetComponent<TrafficLight>().isRed()){
+				updateDistance((int) SensorDirection.FRONT, -1, Vector3.Distance(transform.position, collider.gameObject.transform.position));
+			} else {
+				updateDistance((int) SensorDirection.FRONT, -1, radius);
+			}
+			return;
+		}else if (collider == collider.gameObject.GetComponent<CircleCollider2D> () || collider.gameObject.layer != SceneVars.streetLayer) {
 			return;
 		}
 
@@ -105,12 +111,22 @@ public class Sensors : MonoBehaviour
 		hitFR = Physics2D.Raycast (transform.position + (transform.up * height_offset) + (transform.right * width_offset),frontR.normalized, radius-height_offset, LayerMask.GetMask("Street"));
 		hitFL = Physics2D.Raycast (transform.position + (transform.up * height_offset) - (transform.right * width_offset),frontL.normalized, radius-height_offset, LayerMask.GetMask("Street"));
 
-		if (hitF.collider != null && hitF.collider != col) {
-			updateDistance ((int)SensorDirection.FRONT, hitF.collider.gameObject.GetComponent<CarModel> ().GetID (), hitF.distance);
-		}	else if (hitFR.collider != null && hitFL.collider != col) {
-			updateDistance ((int)SensorDirection.FRONT, hitFR.collider.gameObject.GetComponent<CarModel> ().GetID (), hitFR.distance);
-		}	else if (hitFL.collider != null && hitF.collider != col) {
-			updateDistance ((int)SensorDirection.FRONT, hitFL.collider.gameObject.GetComponent<CarModel> ().GetID (), hitFL.distance);
+		if( (hitF.collider != null && hitF.collider != col) || (hitFR.collider != null && hitFL.collider != col) || (hitFL.collider != null && hitF.collider != col) ){
+			minDist = radius;
+			if(hitF.collider!=null && hitF.distance < minDist){
+				minDist = hitF.distance;
+				tmpCol = hitF.collider;
+			}
+			if(hitFR.collider!=null && hitFR.distance < minDist){
+				minDist = hitFR.distance;
+				tmpCol = hitFR.collider;
+			}
+			if(hitFL.collider!=null && hitFL.distance < minDist){
+				minDist = hitFL.distance;
+				tmpCol = hitFL.collider;
+			}
+			updateDistance ((int)SensorDirection.FRONT, tmpCol.gameObject.GetComponent<CarModel> ().GetID (), minDist);
+			otherCollider = tmpCol;
 		}	else { //not in front
 			//use old one for the side
 			//logic with conjunction center-center 
@@ -134,9 +150,13 @@ public class Sensors : MonoBehaviour
 		}
 		hitR = Physics2D.Raycast(transform.position + (transform.right * width_offset), rightHand.normalized, radius, LayerMask.GetMask("Street"));
 		if (hitR.collider != null && hitR.collider != col) {
+//			Debug.Log ("sensor " + GetComponent<CarModel> ().GetID () + " dist to " + hitR.collider.GetComponent<CarModel> ().GetID () + " = " + hitR.distance );
 			rightDelta = hitR.distance - rightDist;
 			rightDist = hitR.distance;
-		} 
+		} else {
+			rightDist = radius;
+			rightDelta = 0;
+		}
 	}
 
 	void updateDistance(int index, float id, float newdist){
@@ -177,6 +197,12 @@ public class Sensors : MonoBehaviour
 			ds[i].y=distances[i].dist;
 		}
 
+		radius = 1 + GetComponent<Rigidbody2D> ().velocity.magnitude;
+		if (radius > 3) {
+			radius = 3;
+		}
+		col.radius = radius;
+
 		if (triggered && !otherCollider) {
 			//the other collider was destroyed!
 			// need to reset distance for its ID
@@ -195,6 +221,8 @@ public class Sensors : MonoBehaviour
 			return;
 		}
 		resetDistances (collider.gameObject.GetComponent<CarModel> ().GetID ());
+		rightDist = radius;
+		rightDelta = 0;
 
 		triggered = false;
 		otherCollider = null;

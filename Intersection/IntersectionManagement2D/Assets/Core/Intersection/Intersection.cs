@@ -5,10 +5,11 @@ using System.Collections;
 //sets up the intersection, origins, destinations
 
 public class Intersection : MonoBehaviour{
-
+	public bool trafficLightMode = false;
 	public static Vector3 center = new Vector3(0,0,0);
 	private int ORIGINS = 4, DESTINATIONS = 4;
-	private GameObject[] origins, destinations;
+	private int group = 0;
+	private GameObject[] origins, destinations, trafficLights;
 	public Graph graph;
 	static private int cCount = 0;
 	static private int aCount = 0;
@@ -19,8 +20,8 @@ public class Intersection : MonoBehaviour{
 	public int created;
 	public int lost;
 
-//	public int RATE = 15;
-//	private int spawnRate; //number of frames
+	public int TrafficLight_RATE = 500;
+	private int lightRate; //number of frames
 
 	static public void increaseCollisions(){
 		cCount++;
@@ -43,8 +44,7 @@ public class Intersection : MonoBehaviour{
 		created = Intersection.oCount;
 		lost = Intersection.lCount;
 		graph = new Graph ();
-
-//		return;
+		trafficLights = new GameObject[ORIGINS];
 
 		for (int i = 0; i < ORIGINS; i++) {
 			origins[i] = new GameObject("origin "+(i+1));
@@ -65,22 +65,39 @@ public class Intersection : MonoBehaviour{
 			destinations[i].transform.position = CoordinatesTranslator.translateDestination(i);
 		}
 
-//		spawnRate = 0;
+		if (trafficLightMode) { 
+			for (int i = 0; i < ORIGINS; i++) {
+				trafficLights [i] = new GameObject ("trafficLight" + (i + 1));
+				trafficLights [i].AddComponent<TrafficLight> ();
+				trafficLights [i].GetComponent<TrafficLight> ().setOrigin (i);
+			}
+
+			lightRate = TrafficLight_RATE;
+		}
 	}
 	void Update(){
 		collisions = Intersection.cCount / 2;
 		arrived = Intersection.aCount;
 		created = Intersection.oCount;
 		lost = Intersection.lCount;
+
+		if (trafficLightMode) {
+			if (lightRate == TrafficLight_RATE) {
+				if (trafficLights [group].GetComponent<TrafficLight> ().canTurnRed () && trafficLights [group + 1].GetComponent<TrafficLight> ().canTurnRed ()) {
+					trafficLights [group].GetComponent<TrafficLight> ().setRed ();
+					trafficLights [group + 1].GetComponent<TrafficLight> ().setRed ();
+					group = group == 0 ? 2 : 0;
+					trafficLights [group].GetComponent<TrafficLight> ().setGreen ();
+					trafficLights [group + 1].GetComponent<TrafficLight> ().setGreen ();
+					lightRate = 0;
+				} else {
+					Debug.Log ("cant turn red yet");
+					return;
+				}
+			}
+			lightRate++;
+		}
 	}
-//		if (spawnRate == 0) {
-//
-//			origins[(int) Random.Range(0, ORIGINS)].GetComponent<OriginPoint>().CreateCar();
-//			
-//		}
-//		spawnRate++;
-//		if (spawnRate >= RATE)
-//			spawnRate = 0;
-//	}
+
 
 }

@@ -33,8 +33,10 @@ public class CarModel : MonoBehaviour, ICar {
     // Use this for initialization
     void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.mass = this.mass;
-		rb.angularDrag = angDrag;
+		if (rb) {
+			rb.mass = this.mass;
+			rb.angularDrag = angDrag;
+		}
         sensors = gameObject.GetComponent<Sensors>();
 	}
 
