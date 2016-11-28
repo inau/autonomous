@@ -17,7 +17,6 @@ public class Sensors : MonoBehaviour
 {
 	//for debugging distances TODO remove it
 	public Vector2[] ds;
-
 	public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
 	public float radius = 3.0f;
 	public DistanceStruct[] distances = new DistanceStruct[3];
@@ -37,7 +36,11 @@ public class Sensors : MonoBehaviour
 	private float defaultID = -1f;
 	private float height_offset, width_offset;
 	private float minDist;
+	private bool redLight = false;
 
+	public bool isRedLight(){
+		return redLight;
+	}
 
 	void Start ()
 	{
@@ -75,18 +78,22 @@ public class Sensors : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
+		other = collider.gameObject.transform.position - transform.position;
+
 		if (collider.gameObject.GetComponent<TrafficLight>()){
-			if(collider.gameObject.GetComponent<TrafficLight>().isRed()){
-				updateDistance((int) SensorDirection.FRONT, -1, Vector3.Distance(transform.position, collider.gameObject.transform.position));
+			gamma = Mathf.Acos (Vector3.Dot (transform.up.normalized, other.normalized));
+			//if redlight is in front
+			if(gamma < (alpha/2) && collider.gameObject.GetComponent<TrafficLight>().isRed() && !redLight){
+				redLight = true;
 			} else {
-				updateDistance((int) SensorDirection.FRONT, -1, radius);
+				redLight = false;
 			}
-			return;
-		}else if (collider == collider.gameObject.GetComponent<CircleCollider2D> () || collider.gameObject.layer != SceneVars.streetLayer) {
 			return;
 		}
 
-		other = collider.gameObject.transform.position - transform.position;
+		if (collider == collider.gameObject.GetComponent<CircleCollider2D> () || collider.gameObject.layer != SceneVars.streetLayer) {
+			return;
+		}
 
 		x = transform.up.x;
 		y = transform.up.y;
@@ -216,7 +223,15 @@ public class Sensors : MonoBehaviour
 	void OnTriggerExit2D(Collider2D collider){
 
 		//TODO when a car is in my collider and gets destroyed, this is not triggered
-
+		other = collider.gameObject.transform.position - transform.position;
+		if (collider.gameObject.GetComponent<TrafficLight>()){
+			gamma = Mathf.Acos (Vector3.Dot (transform.up.normalized, other.normalized));
+			//if redlight is in front
+			if(gamma < (alpha/2) && collider.gameObject.GetComponent<TrafficLight>().isRed() && redLight){
+				redLight = false; //lost sight of a front red light
+			} 
+			return;
+		}
 		if (collider.gameObject.layer != SceneVars.streetLayer) {
 			return;
 		}

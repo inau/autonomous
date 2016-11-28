@@ -158,7 +158,7 @@ public class Graph{
 	}
 
 	private void debugShowGraph(){
-		Debug.Log("created " + nodes.Count + " nodes"  );
+//		Debug.Log("created " + nodes.Count + " nodes"  );
 		GameObject o;
 		SpriteRenderer sr;
 		int i = 0;
@@ -169,16 +169,16 @@ public class Graph{
 			sr.color = Color.green;
 			o.transform.position = k;
 			i++;
-			//			if (nodes[k].edges.Count == 0)
-			//				Debug.Log("node has no edges");
-			foreach(Edge e in nodes[k].edges.Values){
-				if (e.from != null){
-					Debug.DrawLine(e.from.position, e.to.position, Color.red, 1000f);
-					//					Debug.Log("line drawn " + e.from.position + "-" + e.to.position );
-				}else
-					Debug.Log("from node is null");
-				
-			}
+//			//			if (nodes[k].edges.Count == 0)
+//			//				Debug.Log("node has no edges");
+//			foreach(Edge e in nodes[k].edges.Values){
+//				if (e.from != null){
+//					Debug.DrawLine(e.from.position, e.to.position, Color.red, 1000f);
+//					//					Debug.Log("line drawn " + e.from.position + "-" + e.to.position );
+//				}else
+//					Debug.Log("from node is null");
+//				
+//			}
 		}
 	}
 

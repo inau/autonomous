@@ -2,15 +2,18 @@
 using System;
 
 public class ReactiveController : MonoBehaviour{
-	
+
+	public ReferencePoint origin, destination;
+
 	private CarModel car;
 	private Sensors data;
-	public ReferencePoint origin, destination;
 	private DistanceStruct[] dists;
 	private float[] deltas;
 	private float dfront, dleft, dright;
 	private Graph graph;
-	Node currentNode, nextNode;
+	private Node currentNode, nextNode;
+//	private bool state = true, prevstate; //true: moving false: breaking
+//	private int waitTime=0, INTERVAL = 100;
 	
 	void Start()
 	{
@@ -35,7 +38,7 @@ public class ReactiveController : MonoBehaviour{
 		if (data == null)
 			data = car.GetSensors ();
 		car.AdjustSpeed ();
-		
+
 		//Reactive logic
 		dists = data.getDistances ();
 		deltas = data.getDeltas ();
@@ -44,6 +47,27 @@ public class ReactiveController : MonoBehaviour{
 		dleft = deltas [(int)Sensors.SensorDirection.LEFT];
 		dright = deltas [(int)Sensors.SensorDirection.RIGHT];
 
+		//wait before restarting?
+//		prevstate = state;
+//		state = (dfront >= -0.0001f);
+//		if (waitTime > 0 || (!prevstate && state)) { //was still and now I want to move
+//			//wait for some frames more
+//			waitTime++;
+//			if (waitTime < INTERVAL) {
+//				state = false; //not yet buddy
+//				car.slowbrake ();
+//				Debug.Log (GetComponent<CarModel> ().GetID () + " waiting to restart ");
+//				return;
+//			} 
+//			waitTime = 0;
+//		} else {
+//			waitTime = 0;
+//		}
+		//if traffic lights, check if red
+		if (data.isRedLight ()) {
+			car.slowbrake();
+			return;
+		}
 		// emergency brake, too close
 		if (dists [(int)Sensors.SensorDirection.FRONT].dist < data.radius /2) {
 			car.brake ();
@@ -98,7 +122,7 @@ public class ReactiveController : MonoBehaviour{
 		this.origin = origin;
 		this.destination = destination;
 	}
-	
+
 }
 
 

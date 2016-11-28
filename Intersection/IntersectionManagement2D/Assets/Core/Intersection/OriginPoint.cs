@@ -11,6 +11,7 @@ public class OriginPoint : MonoBehaviour{
 	private int spawnRate; //number of frames
 	
     private bool canSpawn = true;
+	private bool canTurn = true;
 
 	ReferencePoint origin;
 	GameObject newCar;
@@ -57,6 +58,9 @@ public class OriginPoint : MonoBehaviour{
 	public void setOrigin(ReferencePoint _origin){
 		origin = _origin;
 	}
+	public void setTurn(bool _can){
+		canTurn = _can;
+	}
 	
     public void CreateCarFromPrefab()
     {
@@ -65,7 +69,11 @@ public class OriginPoint : MonoBehaviour{
         car = go.GetComponent<CarModel>();
 		go.name = "Car" + car.GetID ();
         ReactiveController rc = go.GetComponent<ReactiveController>();
-        rc.setRoute(origin, ReferencePointUtil.getRandomDest(origin)); //no U turns
+		if (canTurn)
+			rc.setRoute (origin, ReferencePointUtil.getRandomDest(origin)); //no U turns
+		else 
+			rc.setRoute (origin, ReferencePointUtil.getOpposite(origin)); 
+
         
         //rotation
         go.transform.Rotate(CoordinatesTranslator.getInitialRotation(origin));
