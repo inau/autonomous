@@ -1,13 +1,11 @@
-\documentclass{article}
+\documentclass[titlepage]{article}
 
 %packages
 \usepackage{cite}
-
-
-\begin{document}
+\usepackage{titlepic}
+\usepackage{graphicx}
 
 \title{Autonomous Car Intersection Simulation Project}
-
 \author{
    Ivan Naumovski\\
     {inau@itu.dk}\\
@@ -15,10 +13,30 @@
    Martino Secchi\\
     {msec@itu.dk}\\
 }
+\titlepic{\includegraphics[scale=.3]{img/itulogo.jpg}}
 \date{December 2016}
 
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+
+	{\huge\bfseries Autonomous Car Intersection Simulation Project \par}
+	\vspace{2cm}
+	{\Large Ivan Naumovski, {inau@itu.dk}\\ Martino Secchi, {msec@itu.dk}\\\par}
+	\vfill
+	supervised by\par
+	\large Prof.~Kasper \textsc{St\o y}
+
+	\vfill
+	\includegraphics[width=0.3\textwidth]{img/itulogo.jpg}\par\vspace{1cm}
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
 \pagenumbering{gobble}
-\maketitle
+%\maketitle
 \clearpage
 \tableofcontents
 \clearpage
@@ -34,12 +52,22 @@
 \section{Related work}
 \input{c/relwork.tex}
 
+\section{Theory}
+\input{c/theory.tex}
+
 \section{System description}
 \input{c/sysdesc.tex}
+
+\section{Experiments}
+\input{c/experiment.tex}
+
+\section{Discussion}
+\input{c/discus.tex}
 
 \section{Conclusion}
 \input{c/conclusion.tex}
 
 \bibliographystyle{abbrv}
-\bibliography{report}
+\bibliography{report2}
+
 \end{document}
