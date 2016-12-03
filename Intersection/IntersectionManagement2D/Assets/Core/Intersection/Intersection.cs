@@ -79,7 +79,7 @@ public class Intersection : MonoBehaviour{
 		trafficLights = new GameObject[ORIGINS];
 
 		GameObject go = Instantiate(Resources.Load("prefab/CarPrefab")) as GameObject;
-		carMaxSpeed = go.GetComponent<CarModel>().maxspeed;
+		carMaxSpeed = RealWorldMeasure.translateSpeedKmh(go.GetComponent<CarModel>().maxspeed);
 		carAcceleration = go.GetComponent<CarModel>().acceleration;
 		Destroy (go);
 

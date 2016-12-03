@@ -129,3 +129,15 @@ public class Direction{
 		return dot;
 	}
 }
+
+public class RealWorldMeasure{
+	static public float carLengthU = 0.8f;//unity
+	static public float carLengthR = 4.4f;//meters
+	static public float translateRatio = carLengthR / carLengthU; //5.5
+	static public float translateSpeedKmh(float speed){
+		return (speed * translateRatio) * 3.6f;
+	}
+	static public float translateDistanceM(float dist){
+		return dist * translateRatio;
+	}
+}

@@ -16,6 +16,7 @@ public class CarModel : MonoBehaviour, ICar {
     public float turnpower;
     public float mass;
     public float friction;
+	public float velocity; // for debugging TODO remove
 
     private Sensors sensors;
 
@@ -28,6 +29,10 @@ public class CarModel : MonoBehaviour, ICar {
 
 	void Awake(){
 		ID = id_gen.nextid ();
+	}
+
+	void Update(){
+		velocity = RealWorldMeasure.translateSpeedKmh(rb.velocity.magnitude);
 	}
 
     // Use this for initialization

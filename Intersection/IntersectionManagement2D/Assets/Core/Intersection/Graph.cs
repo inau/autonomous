@@ -111,42 +111,68 @@ public class Graph{
 		centerN.position.y += 0.5f;
 		nodes.Add (centerN.position, centerN);
 
-		prev = nodes [findNodeFrom (ReferencePoint.North, IntersectionSize.streetLength - 1)];
-		node = nodes [findNodeTo (ReferencePoint.East, IntersectionSize.streetLength + 1)];
-//		prev.AddEdge( ReferencePoint.East, new Edge(prev, node, ReferencePoint.East));
-//		prev.AddEdge (ReferencePoint.North, new Edge (prev, center, ReferencePoint.North));//U turn
-		prev.AddEdge (ReferencePoint.East, new Edge (prev, centerW, ReferencePoint.East));
-//		centerW.AddEdge (ReferencePoint.East, new Edge (centerW, node, ReferencePoint.East));
-		centerW.AddEdge (ReferencePoint.East, new Edge (centerW, centerS, ReferencePoint.East));
-		centerS.AddEdge (ReferencePoint.East, new Edge (centerS, node, ReferencePoint.East));
+		prev = nodes [findNodeFrom (ReferencePoint.North, IntersectionSize.streetLength - 2)];
+		node = nodes [findNodeTo (ReferencePoint.East, IntersectionSize.streetLength + 2)];
+		prev.AddEdge (ReferencePoint.East, new Edge (prev, centerN, ReferencePoint.East));
+		centerN.AddEdge (ReferencePoint.East, new Edge (centerN, centerE, ReferencePoint.East));
+		centerE.AddEdge (ReferencePoint.East, new Edge (centerE, node, ReferencePoint.East));
+		
+		prev = nodes [findNodeFrom (ReferencePoint.West, IntersectionSize.streetLength - 2)];
+		node = nodes [findNodeTo (ReferencePoint.North, IntersectionSize.streetLength + 2)];
+		prev.AddEdge( ReferencePoint.North, new Edge(prev, centerW, ReferencePoint.North));
+		centerW.AddEdge( ReferencePoint.North, new Edge(centerW, centerN, ReferencePoint.North));
+		centerN.AddEdge( ReferencePoint.North, new Edge(centerN, node, ReferencePoint.North));
+		
+		
+		prev = nodes [findNodeFrom (ReferencePoint.South, IntersectionSize.streetLength - 2)];
+		node = nodes [findNodeTo (ReferencePoint.West, IntersectionSize.streetLength + 2)];
+		prev.AddEdge( ReferencePoint.West, new Edge(prev, centerS, ReferencePoint.West));
+		centerS.AddEdge (ReferencePoint.West, new Edge (centerS, centerW, ReferencePoint.West));
+		centerW.AddEdge (ReferencePoint.West, new Edge (centerW, node, ReferencePoint.West));
+		
+		prev = nodes [findNodeFrom (ReferencePoint.East, IntersectionSize.streetLength - 2)];
+		node = nodes [findNodeTo (ReferencePoint.South, IntersectionSize.streetLength + 2)];
+		prev.AddEdge( ReferencePoint.South, new Edge(prev, centerE, ReferencePoint.South));
+		centerE.AddEdge( ReferencePoint.South, new Edge(centerE, centerS, ReferencePoint.South));
+		centerS.AddEdge( ReferencePoint.South, new Edge(centerS, node, ReferencePoint.South));
 
-		prev = nodes [findNodeFrom (ReferencePoint.West, IntersectionSize.streetLength - 1)];
-		node = nodes [findNodeTo (ReferencePoint.North, IntersectionSize.streetLength + 1)];
-		//		prev.AddEdge( ReferencePoint.North, new Edge(prev, node, ReferencePoint.North));
-		//		prev.AddEdge (ReferencePoint.West, new Edge (prev, center, ReferencePoint.West));//U turn
-		prev.AddEdge( ReferencePoint.North, new Edge(prev, centerS, ReferencePoint.North));
-//		centerS.AddEdge( ReferencePoint.North, new Edge(centerS, node, ReferencePoint.North));
-		centerS.AddEdge( ReferencePoint.North, new Edge(centerS, centerE, ReferencePoint.North));
-		centerE.AddEdge( ReferencePoint.North, new Edge(centerE, node, ReferencePoint.North));
-
-
-		prev = nodes [findNodeFrom (ReferencePoint.South, IntersectionSize.streetLength - 1)];
-		node = nodes [findNodeTo (ReferencePoint.West, IntersectionSize.streetLength + 1)];
-//		prev.AddEdge( ReferencePoint.West, new Edge(prev, node, ReferencePoint.West));
-//		prev.AddEdge (ReferencePoint.South, new Edge (prev, center, ReferencePoint.South));//U turn
-		prev.AddEdge( ReferencePoint.West, new Edge(prev, centerE, ReferencePoint.West));
-//		centerE.AddEdge( ReferencePoint.West, new Edge(centerE, node, ReferencePoint.West));
-		centerE.AddEdge (ReferencePoint.West, new Edge (centerE, centerN, ReferencePoint.West));
-		centerN.AddEdge (ReferencePoint.West, new Edge (centerN, node, ReferencePoint.West));
-
-		prev = nodes [findNodeFrom (ReferencePoint.East, IntersectionSize.streetLength - 1)];
-		node = nodes [findNodeTo (ReferencePoint.South, IntersectionSize.streetLength + 1)];
-//		prev.AddEdge( ReferencePoint.South, new Edge(prev, node, ReferencePoint.South));
-//		prev.AddEdge (ReferencePoint.East, new Edge (prev, center, ReferencePoint.East));//U turn
-		prev.AddEdge( ReferencePoint.South, new Edge(prev, centerN, ReferencePoint.South));
-//		centerN.AddEdge( ReferencePoint.South, new Edge(centerN, node, ReferencePoint.South));
-		centerN.AddEdge( ReferencePoint.South, new Edge(centerN, centerW, ReferencePoint.South));
-		centerW.AddEdge( ReferencePoint.South, new Edge(centerW, node, ReferencePoint.South));
+		//old one
+//		prev = nodes [findNodeFrom (ReferencePoint.North, IntersectionSize.streetLength - 1)];
+//		node = nodes [findNodeTo (ReferencePoint.East, IntersectionSize.streetLength + 1)];
+////		prev.AddEdge( ReferencePoint.East, new Edge(prev, node, ReferencePoint.East));
+////		prev.AddEdge (ReferencePoint.North, new Edge (prev, center, ReferencePoint.North));//U turn
+//		prev.AddEdge (ReferencePoint.East, new Edge (prev, centerW, ReferencePoint.East));
+////		centerW.AddEdge (ReferencePoint.East, new Edge (centerW, node, ReferencePoint.East));
+//		centerW.AddEdge (ReferencePoint.East, new Edge (centerW, centerS, ReferencePoint.East));
+//		centerS.AddEdge (ReferencePoint.East, new Edge (centerS, node, ReferencePoint.East));
+//
+//		prev = nodes [findNodeFrom (ReferencePoint.West, IntersectionSize.streetLength - 1)];
+//		node = nodes [findNodeTo (ReferencePoint.North, IntersectionSize.streetLength + 1)];
+//		//		prev.AddEdge( ReferencePoint.North, new Edge(prev, node, ReferencePoint.North));
+//		//		prev.AddEdge (ReferencePoint.West, new Edge (prev, center, ReferencePoint.West));//U turn
+//		prev.AddEdge( ReferencePoint.North, new Edge(prev, centerS, ReferencePoint.North));
+////		centerS.AddEdge( ReferencePoint.North, new Edge(centerS, node, ReferencePoint.North));
+//		centerS.AddEdge( ReferencePoint.North, new Edge(centerS, centerE, ReferencePoint.North));
+//		centerE.AddEdge( ReferencePoint.North, new Edge(centerE, node, ReferencePoint.North));
+//
+//
+//		prev = nodes [findNodeFrom (ReferencePoint.South, IntersectionSize.streetLength - 1)];
+//		node = nodes [findNodeTo (ReferencePoint.West, IntersectionSize.streetLength + 1)];
+////		prev.AddEdge( ReferencePoint.West, new Edge(prev, node, ReferencePoint.West));
+////		prev.AddEdge (ReferencePoint.South, new Edge (prev, center, ReferencePoint.South));//U turn
+//		prev.AddEdge( ReferencePoint.West, new Edge(prev, centerE, ReferencePoint.West));
+////		centerE.AddEdge( ReferencePoint.West, new Edge(centerE, node, ReferencePoint.West));
+//		centerE.AddEdge (ReferencePoint.West, new Edge (centerE, centerN, ReferencePoint.West));
+//		centerN.AddEdge (ReferencePoint.West, new Edge (centerN, node, ReferencePoint.West));
+//
+//		prev = nodes [findNodeFrom (ReferencePoint.East, IntersectionSize.streetLength - 1)];
+//		node = nodes [findNodeTo (ReferencePoint.South, IntersectionSize.streetLength + 1)];
+////		prev.AddEdge( ReferencePoint.South, new Edge(prev, node, ReferencePoint.South));
+////		prev.AddEdge (ReferencePoint.East, new Edge (prev, center, ReferencePoint.East));//U turn
+//		prev.AddEdge( ReferencePoint.South, new Edge(prev, centerN, ReferencePoint.South));
+////		centerN.AddEdge( ReferencePoint.South, new Edge(centerN, node, ReferencePoint.South));
+//		centerN.AddEdge( ReferencePoint.South, new Edge(centerN, centerW, ReferencePoint.South));
+//		centerW.AddEdge( ReferencePoint.South, new Edge(centerW, node, ReferencePoint.South));
 
 
 
