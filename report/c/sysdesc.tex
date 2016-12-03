@@ -8,3 +8,25 @@
 \item Sensor range limitation based on braking distance considerations.
 \item SimScale to RealWorldScale
 \end{itemize}
+
+\subsection{The World Model}
+As observed in the real world, multiple intersection models exist, three lane and 4 lane intersections are the most common ones.
+The style can be either with the roundabout approach, which essentially rules out the left turn complication or a traditional 4 lane intersection where going left crosses the opposing traffics lane.
+
+In our model we mainly focus on a single lane 4 way intersection.\\
+\textbf{insert simple intersection images - maybe graph images from unity}
+%We also consider a 4 way roundabout.
+
+We represent these intersection models using an underlying directed graph. A car agent in our environment is seeded with information about its origin and its destination.
+These points are vertices in our graph. Every combination of origin and destination pair has one path.
+
+While this does not provide alot of flexibility in straying from the path, the simplicity makes the model really easy to implement.
+
+\subsubsection{The traffic lights}
+This is an attempt to mimic traffic light regulated intersections. The lights change at intervals chosen in regards to our experiences with intersections. These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. We settled on 20 second windows.
+
+
+\subsection{The Car Model}
+The way the car has been modelled is using a interface which essentially contains actions such as accellerating or decellerating, braking, and turning left or right.
+This abstraction simplifies the step of going from a virtual model to a physical one with robot actors.
+This interface is the used by the controller. This seperation makes it simple to develop multiple types of controllers.
