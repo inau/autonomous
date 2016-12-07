@@ -1,29 +1,38 @@
-Reactive vs. deliberate vs. hybrid.
-
-\textbf{maybe theory makes more sense before related work}\\
-
 The theory we have touched upon is from multiple fields of engineering. One field is within traffic engineering, namely intersection management. The other is within the field of robotics, namely robot control.
+
+\subsubsection{Intersection Management}
+The field of intersection management tries to deal with the challenges arrising when trying to organize multiple entities to efficiently pass through a critical zone.\\
+The challenge to solve is going from origin to destination while not colliding with other entities.\\
+
+These challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority.\\
+Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation, however our starting point is rooted in the way that traffic is handled in europe which is kind of homogenous.\\
+There exists a general set of rules that makes it easy to determine what entity has a higher priority within critical sections.\\
+Usually priority is indicated by either traffic lights, road markings and/or signs or determined by the right hand rule.
+The intersection models that we are interested in are 4 way intersections with and without traffic lights.
+This is due to the facts that these types of intersections are the most common ones in our local area and additionally an intersection with one less way still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from or travels to one of the ways.
+
+\subsubsection{Control Paragdims}
 
 We use the term agents for robots or other actors moving within an environment.\\
 We use the term environment as being synonimous to the world in which the agent is confined.
 The following will contain short presentations of the three canonical ways of doing robot control.
 
-\subsection{Reactive Control}
-This paragdim is also coined Sense-Act. This is due to the fact that it can be explained as simply as sensing the environment and reacting instantly to the registered values.
-Consider a simple robot with only one distance sensor in the front and the goal of avoiding collisions. While there is nothing infront of it for a certain distance it moves forward, else it does not.
+\textit{Reactive Control} which is also coined Sense-Act is a paragdigm that acts directly on sensory input.\\
+In our research we did not stumble upon any systems using purely reactive controllers, which we found interesting. This is due to the fact that the simplicity of the interaction with the environment should make pure reactive controllers quite safe.
+Simple schemes for collison avoidance are trivial to implement using pure reactive controllers.\\
+An example of such a controller can be expressed quite simple using only a frontal sensor. The rule could be phrased as while this sensor does not register anything infront of the vehicle for a certain distance accelerate else brake.\\
+The strength of this paragdigm is that its highly reactive to the environment. There are no complex layers inbetween.\\
 
-\subsection{Deliberate Control}
-This paragdim is also known as Sense-Plan-Act.
+In contrast to the above paragdigm there exits a pragdigm named \textit{deliberate control}, or alternatively Sense-Plan-Act.
 Compared to the reactive control it introduces a layer of planning.
 This however requires alot more information about the environment.
 Any change to the environment would also invalidate the current plan as this is not factored in.
 This is computationally heavy since it senses, plans a step, executes the step and starts over.
 A plan can consist of multiple steps which are required to reach a goal.
-Consider a simple robot as the one previously mentioned needing to go from point A to B.
-While its tempting to just point it in the direction and hope it succeeds, any obstacle in the way would make this difficult.
-However translating the goal to multiple steps of moving in a direction, and handling the case of being unable to perform a step by invalidating the current plan and recalculating it, makes this approach better suited for complex tasks.
 
-\subsection{Hybrid Control}
-This paragdigm is a hybrid of the two previous control paragdigms. 
-It can be explained as decomposing a complex goal into sub tasks. Lets say a robot needing to pickup a object and moving it to a position.
-It has one behaviour for gripping the object once the sensor has identified it, and another for actually going from A to B.
+The third canonical way of doing robot control is a hybrid of the two above, and hence it is also referred to as hybrid control.
+It resides somewhere in the middle where it has abstractions of routines using reactive controllers - but uses a higher level mechanism to combine these for advanced control schemes.
+
+We discovered multiple papers that facilitated either deliberate or hybrid approaches.
+
+In particular we were inspired by a paper by \cite{texas}, which seeks to solve exactly the same problem as us.
