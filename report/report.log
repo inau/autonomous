@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  3 DEC 2016 15:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  8 DEC 2016 17:21
 entering extended mode
 **D:/Workspaces/AutonomousCars/autonomous/report/report.tex
 (D:/Workspaces/AutonomousCars/autonomous/report/report.tex
@@ -30,10 +30,12 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cite\cite.sty"
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 332.
-Package: cite 2015/02/27  v 5.5
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count87
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\titlepic\titlepic.sty"
 Package: titlepic 2009/08/03 1.1 Package to display a picture on the title page
@@ -66,42 +68,42 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count87
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count88
+\scratchcounter=\count89
 \scratchdimen=\dimen105
 \scratchbox=\box26
-\nofMPsegments=\count89
-\nofMParguments=\count90
+\nofMPsegments=\count90
+\nofMParguments=\count91
 \everyMPshowfont=\toks15
-\MPscratchCnt=\count91
+\MPscratchCnt=\count92
 \MPscratchDim=\dimen106
-\MPnumerator=\count92
-\makeMPintoPDFobject=\count93
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
 \everyMPtoPDFconversion=\toks16
 ) <img/itulogo.jpg, id=1, 373.395pt x 274.02374pt>
 File: img/itulogo.jpg Graphic file (type jpg)
  <use img/itulogo.jpg>
-Package pdftex.def Info: img/itulogo.jpg used on input line 33.
+Package pdftex.def Info: img/itulogo.jpg used on input line 35.
 (pdftex.def)             Requested size: 103.50105pt x 75.95677pt.
 
 [1
@@ -110,9 +112,9 @@ Package pdftex.def Info: img/itulogo.jpg used on input line 33.
 ars/autonomous/report/img/itulogo.jpg>]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
+(Font)              <5> on input line 2.
 )
 \tf@toc=\write3
  [1
@@ -120,19 +122,40 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 (D:\Workspaces\AutonomousCars\autonomous\report\c/abstract.tex)
 (D:\Workspaces\AutonomousCars\autonomous\report\c/intro.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\c/relwork.tex
+(D:\Workspaces\AutonomousCars\autonomous\report\c/theory.tex [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+
+ []
+
+
+Overfull \hbox (6.18579pt too wide) in paragraph at lines 8--13
+\OT1/cmr/m/n/10 The com-mon-al-i-ties used are traffic-legislation and in-ter-s
+ec-tions. Traffic-legislation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--28
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 29--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/relwork.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--3
 
  []
 
-) (D:\Workspaces\AutonomousCars\autonomous\report\c/theory.tex [1
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 3--4
-
- []
-
-) (D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
+[3]) (D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -140,34 +163,35 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
- [2])
+ [4])
 (D:\Workspaces\AutonomousCars\autonomous\report\c/experiment.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--4
 
  []
 
-[3]) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex) [5]
 (D:\Workspaces\AutonomousCars\autonomous\report\c/conclusion.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl) [4]
+(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl) [6]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux) ) 
 Here is how much of TeX's memory you used:
- 1274 strings out of 493921
- 18029 string characters out of 3144879
- 68959 words of memory out of 3000000
- 4572 multiletter control sequences out of 15000+200000
- 6065 words of font info for 22 fonts, out of 3000000 for 9000
+ 1526 strings out of 493921
+ 20901 string characters out of 3144879
+ 73922 words of memory out of 3000000
+ 4822 multiletter control sequences out of 15000+200000
+ 6411 words of font info for 23 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,5n,19p,415b,173s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,4n,28p,415b,172s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 123746 bytes).
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on report.pdf (8 pages, 141577 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
