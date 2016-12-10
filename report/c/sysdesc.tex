@@ -17,13 +17,18 @@ In our model we mainly focus on a single lane 4 way intersection.\\
 \textbf{insert simple intersection images - maybe graph images from unity}
 %We also consider a 4 way roundabout.
 
-We represent these intersection models using an underlying directed graph. A car agent in our environment is seeded with information about its origin and its destination.
-These points are vertices in our graph. Every combination of origin and destination pair has one path.
+We represent these intersection models using an underlying directed graph.
+ A car agent in our environment is seeded with information about its origin and its destination.
+These points are vertices in our graph. 
+Every combination of origin and destination pair has one path.
 
-While this does not provide alot of flexibility in straying from the path, the simplicity makes the model really easy to implement.
+While this does not provide alot of flexibility in straying from the path, the simplicity makes the model really easy to implement and adjust.
 
 \subsubsection{The traffic lights}
-This is an attempt to mimic traffic light regulated intersections. The lights change at intervals chosen in regards to our experiences with intersections. These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. We settled on 20 second windows.
+This is an attempt to mimic traffic light regulated intersections.
+ The lights change at intervals chosen in regards to our experiences with intersections. 
+ These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
+ We settled on 20 second windows.
 
 
 \subsection{The Car Model}
