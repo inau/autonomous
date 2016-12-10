@@ -3,19 +3,22 @@ The theory we have touched upon is from multiple fields of engineering. One fiel
 \subsubsection{Intersection Management}
 The field of intersection management tries to deal with the challenges arrising when trying to organize multiple entities to efficiently pass through a critical zone.\\
 The challenge to solve is going from origin to destination while not colliding with other entities.\\
+In the real world these challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority over the others.\\
 
-These challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority.\\
 Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation, however our starting point is rooted in the way that traffic is handled in europe which is kind of homogenous.\\
-There exists a general set of rules that makes it easy to determine what entity has a higher priority within critical sections.\\
-Usually priority is indicated by either traffic lights, road markings and/or signs or determined by the right hand rule.
+The commonalities used are traffic-legislation and intersections.
+Traffic-legislation contains a set of rules that makes it easy to determine what entity has a higher priority within critical sections(intersections).\\
+Intersections are also designed in such a way that agents have an easier task at deciding priorities. 
+This includes tools such as traffic lights, road markings and/or signs.
+
 The intersection models that we are interested in are 4 way intersections with and without traffic lights.
 This is due to the facts that these types of intersections are the most common ones in our local area and additionally an intersection with one less way still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from or travels to one of the ways.
 
 \subsubsection{Control Paragdims}
-
 We use the term agents for robots or other actors moving within an environment.\\
 We use the term environment as being synonimous to the world in which the agent is confined.
-The following will contain short presentations of the three canonical ways of doing robot control.
+The following will contain short presentations of the three canonical ways of doing robot control.\\
+\textbf{ Cite book: The Mataric Primer }
 
 \textit{Reactive Control} which is also coined Sense-Act is a paragdigm that acts directly on sensory input.\\
 In our research we did not stumble upon any systems using purely reactive controllers, which we found interesting. This is due to the fact that the simplicity of the interaction with the environment should make pure reactive controllers quite safe.
@@ -24,15 +27,21 @@ An example of such a controller can be expressed quite simple using only a front
 The strength of this paragdigm is that its highly reactive to the environment. There are no complex layers inbetween.\\
 
 In contrast to the above paragdigm there exits a pragdigm named \textit{deliberate control}, or alternatively Sense-Plan-Act.
-Compared to the reactive control it introduces a layer of planning.
-This however requires alot more information about the environment.
+Compared to the reactive control this paragdigm introduces a layer of planning.
+The additional step however requires more information about the environment.
 Any change to the environment would also invalidate the current plan as this is not factored in.
 This is computationally heavy since it senses, plans a step, executes the step and starts over.
-A plan can consist of multiple steps which are required to reach a goal.
+A plan can consist of multiple steps which are required to reach a goal.\\
 
-The third canonical way of doing robot control is a hybrid of the two above, and hence it is also referred to as hybrid control.
+The third canonical way of doing robot control is a hybrid of the two above, and hence it is also referred to as \textit{hybrid control}.
 It resides somewhere in the middle where it has abstractions of routines using reactive controllers - but uses a higher level mechanism to combine these for advanced control schemes.
 
 We discovered multiple papers that facilitated either deliberate or hybrid approaches.
 
-In particular we were inspired by a paper by \cite{texas}, which seeks to solve exactly the same problem as us.
+\textbf{reference papers}\\
+
+In particular we were inspired by a paper by \citeauthor{texas}, \citep{texas}, which explores the same area as us.\\
+\citeauthor{texas}, define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesfull.
+They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopt into our model.
+
+They mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.

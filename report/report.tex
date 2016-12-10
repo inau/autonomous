@@ -1,7 +1,8 @@
 \documentclass[titlepage]{article}
 
 %packages
-\usepackage{cite}
+%\usepackage{biblatex}
+\usepackage[numbers]{natbib}
 \usepackage{titlepic}
 \usepackage{graphicx}
 
@@ -17,6 +18,7 @@
 \date{December 2016}
 
 
+%\addbibresource{report2.bib}
 \begin{document}
 
 \begin{titlepage}
@@ -51,6 +53,20 @@
 
 \subsection{Motivation}
 \input{c/theory.tex}
+
+\subsubsection{Problem Statement}
+The previously obtained insights about robot control, intersection management and previous research led us to the following plan of attack:
+
+\begin{quotation}
+The goal is to explore the possibility of building a decentralized system which can guide autonomous cars through intersections. 
+The current research and solutions we have found are focused around centralized systems. 
+
+Centralized systems rely alot on scheduling and coordination in a 'global' scale, 
+while the decentralized system we envision would be built on a reactive approach which is centered around local state. 
+
+We would like to build a prototype using the decentralized approach and compare results to an existing centralized solution.
+\end{quotation}
+
 \subsection{Related work}
 \input{c/relwork.tex}
 
@@ -66,7 +82,8 @@
 \section{Conclusion}
 \input{c/conclusion.tex}
 
-\bibliographystyle{abbrv}
+\bibliographystyle{unsrtnat}
 \bibliography{report2}
+%\printbibliography
 
 \end{document}
