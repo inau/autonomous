@@ -1,8 +1,14 @@
+As we have settled on using Unity3D we work within its boundaries.
+It is component driven, meaning every object in the world consists of a collection of components and a transform - the transform is the objects spatial information.
+These components can be either colliders, renderers, or custom scripts, and objects can contain other objects - they can be composite.
+
+The implementation was done by splitting the work in three major blocks. One was \textit{the vehicle model}, another was \textit{the intersection model} and the last \textit{the reactive controller} for the car.
+
 \begin{itemize}
-\item Presentation of our model.
-\item Intersection w/wo traffic lights. Cars going straight vs. cars turning.
-\item Car model and sensor modelling (sick vs simplified directional).
-\item Graph for navigation.
+%\item Presentation of our model.
+%\item Intersection w/wo traffic lights. Cars going straight vs. cars turning.
+%\item Car model and sensor modelling (sick vs simplified directional).
+%\item Graph for navigation.
 \item Reactive controller.
 \item Special rules (right hand).
 \item Sensor range limitation based on braking distance considerations.
@@ -26,12 +32,18 @@ While this does not provide alot of flexibility in straying from the path, the s
 
 \subsubsection{The traffic lights}
 This is an attempt to mimic traffic light regulated intersections.
- The lights change at intervals chosen in regards to our experiences with intersections. 
- These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
- We settled on 20 second windows.
+The lights change at intervals chosen in regards to our experiences with intersections. 
+These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
+We did experiments with different interval windows.
 
 
 \subsection{The Car Model}
 The way the car has been modelled is using a interface which essentially contains actions such as accellerating or decellerating, braking, and turning left or right.
 This abstraction simplifies the step of going from a virtual model to a physical one with robot actors.
-This interface is the used by the controller. This seperation makes it simple to develop multiple types of controllers.
+This interface is then used by the controller. This seperation makes it simple to develop multiple types of controllers.
+
+\subsection{The Reactive Controller}
+This was developed incrementally. Initial versions were done using only collision avoidance.
+The vision was to have multiple different controllers and be able to hotswap these for the simulation.
+
+

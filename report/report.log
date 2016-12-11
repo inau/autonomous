@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  11 DEC 2016 12:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  11 DEC 2016 16:21
 entering extended mode
 **D:/Workspaces/AutonomousCars/autonomous/report/report.tex
 (D:/Workspaces/AutonomousCars/autonomous/report/report.tex
@@ -175,23 +175,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--44
 
  []
 
-[3]) (D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 2.
+[3])
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--86
+
+ []
+
+[4] (D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 12.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
- [4])
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
+ [5])
 (D:\Workspaces\AutonomousCars\autonomous\report\c/experiment.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--4
 
  []
 
-) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex) [6]
 (D:\Workspaces\AutonomousCars\autonomous\report\c/conclusion.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl [5]) [6]
+(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl) [7]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux) ) 
 Here is how much of TeX's memory you used:
  1529 strings out of 493921
@@ -200,7 +215,7 @@ Here is how much of TeX's memory you used:
  4825 multiletter control sequences out of 15000+200000
  6411 words of font info for 23 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,5n,28p,438b,209s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,4n,28p,439b,172s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86
@@ -209,9 +224,9 @@ Here is how much of TeX's memory you used:
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (8 pages, 141269 bytes).
+Output written on report.pdf (9 pages, 145430 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
