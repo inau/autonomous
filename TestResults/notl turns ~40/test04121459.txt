@@ -1,0 +1,20 @@
+trafficLightMode:False
+canTurn:True
+time:82.31189
+trafficLightDuration:40
+trafficLightOffset:3
+collisions:0
+arrived:38
+created:70
+lost:0
+present:9
+deadlocks:1
+spawnRate:1.013399
+spawnProbability:20
+carMaxSpeed:39.6
+carAcceleration:2
+
+#collisions: cars present in intersection and time:
+
+#deadlocks: cars present in intersection and time:
+9    70.57985
