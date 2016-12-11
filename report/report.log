@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  8 DEC 2016 17:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  11 DEC 2016 12:20
 entering extended mode
 **D:/Workspaces/AutonomousCars/autonomous/report/report.tex
 (D:/Workspaces/AutonomousCars/autonomous/report/report.tex
@@ -122,36 +122,56 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 (D:\Workspaces\AutonomousCars\autonomous\report\c/abstract.tex)
 (D:\Workspaces\AutonomousCars\autonomous\report\c/intro.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\c/theory.tex [1
+(D:\Workspaces\AutonomousCars\autonomous\report\c/theory.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
+[1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 4--7
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
 
-Overfull \hbox (6.18579pt too wide) in paragraph at lines 8--13
-\OT1/cmr/m/n/10 The com-mon-al-i-ties used are traffic-legislation and in-ter-s
-ec-tions. Traffic-legislation
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--28
+Overfull \hbox (0.55594pt too wide) in paragraph at lines 16--18
+[]\OT1/cmr/m/n/10 The in-ter-sec-tion mod-els that we are in-ter-ested in are 4
+ way cross-intersections
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--29
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 29--35
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
 
  []
 
-) (D:\Workspaces\AutonomousCars\autonomous\report\c/relwork.tex
+(D:\Workspaces\AutonomousCars\autonomous\report\c/relwork.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--3
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 11--44
 
  []
 
@@ -169,18 +189,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--4
 
  []
 
-) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex) [5]
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
 (D:\Workspaces\AutonomousCars\autonomous\report\c/conclusion.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl) [6]
+(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl [5]) [6]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux) ) 
 Here is how much of TeX's memory you used:
- 1526 strings out of 493921
- 20901 string characters out of 3144879
- 73922 words of memory out of 3000000
- 4822 multiletter control sequences out of 15000+200000
+ 1529 strings out of 493921
+ 20961 string characters out of 3144879
+ 73948 words of memory out of 3000000
+ 4825 multiletter control sequences out of 15000+200000
  6411 words of font info for 23 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,4n,28p,415b,172s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,5n,28p,438b,209s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86
@@ -189,7 +209,7 @@ Here is how much of TeX's memory you used:
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (8 pages, 141577 bytes).
+Output written on report.pdf (8 pages, 141269 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -17,11 +17,9 @@ The intersection models that we are interested in are 4 way cross-intersections 
 This is due to the fact that these types of intersections are the most common ones in our local area. Additionally a smaller intersection still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from or travels to one of the ways.
 
 \subsubsection{Control Paradigms}
-
 We use the term agents for robots or other actors moving within an environment.\\
 We use the term environment as being synonymous to the world in which the agent is confined.
-The following will contain short presentations of the three canonical ways of doing robot control.
-\textbf{ Cite book: The Mataric Primer }
+The following will contain short presentations of the three canonical ways of doing robot control, based on the theory presented in the textbook The Robotics Primer\citep{book:mataric}, and chapters 12 to 15 on the subject.\\
 
 \textit{Reactive Control} which is also coined Sense-Act is a paradigm that acts directly on sensory input.\\
 In our research we did not stumble upon any systems using purely reactive controllers, which we found interesting. This is due to the fact that the simplicity of the interaction with the environment should make pure reactive controllers quite safe.
@@ -38,13 +36,13 @@ This is computationally heavy since it senses, plans a step, executes the step a
 A plan can consist of multiple steps which are required to reach a goal.\\
 
 The third canonical way of doing robot control is a hybrid of the two above, and hence it is also referred to as \textit{hybrid control}.
-It resides somewhere in the middle where it has abstractions of routines using reactive controllers - but uses a higher level mechanism to combine these for advanced control schemes.
+It resides somewhere in the middle where it has abstractions of routines using reactive controllers - but uses a higher level mechanism to combine these for advanced control schemes.\\
 
-We discovered multiple papers that facilitated either deliberate or hybrid approaches.
+%We discovered multiple papers that facilitated either deliberate or hybrid approaches.
 
-\textbf{reference papers}\\
+\input{c/relwork.tex}\\
 
-In particular we were inspired by a paper by \citeauthor{texas}, \citep{texas}, which explores the same area as us.\\
+In particular we were inspired by \citeauthor{texas}\citep{texas}, which explores the same area as us.\\
 \citeauthor{texas}, define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesfull.
 They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopt into our model.
 
