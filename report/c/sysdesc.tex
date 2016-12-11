@@ -9,8 +9,8 @@ The implementation was done by splitting the work in three major blocks. One was
 %\item Intersection w/wo traffic lights. Cars going straight vs. cars turning.
 %\item Car model and sensor modelling (sick vs simplified directional).
 %\item Graph for navigation.
-\item Reactive controller.
-\item Special rules (right hand).
+%\item Reactive controller.
+%\item Special rules (right hand).
 \item Sensor range limitation based on braking distance considerations.
 \item SimScale to RealWorldScale
 \end{itemize}
@@ -45,5 +45,6 @@ This interface is then used by the controller. This seperation makes it simple t
 \subsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
 The vision was to have multiple different controllers and be able to hotswap these for the simulation.
+Later versions also included constructs for priority such as right hand rule.
 
 
