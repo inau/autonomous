@@ -178,7 +178,7 @@ public class Graph{
 
 #if _DEBUG_
 		//graphical representation for testing:
-//		debugShowGraph ();
+		debugShowGraph ();
 #endif
 
 	}

@@ -1,9 +1,23 @@
-we have some fixed parameters such as light control on or off. Mimics intersection lights.\\
-Whether simulated vehicles are able to turn or not.\\
-We have different max speeds - 60 or 40 km per hour approach. This translates to lower speeds during turns (roughly half).\\
+%we have some fixed parameters such as light control on or off. Mimics intersection lights.\\
+%Whether simulated vehicles are able to turn or not.\\
+%We have different max speeds - 60 or 40 km per hour approach. This translates to lower speeds %during turns (roughly half).\\
 
-tests are different combinations of above parameters. And results are measured in collisions, cars spawned, cars reaching destination, and time before deadlock.\\
-Deadlock is the situation where cars have been stuck for a period of time in the `intersection zone' without entering or leaving.
+%tests are different combinations of above parameters. And results are measured in collisions, cars spawned, cars reaching destination, and time before deadlock.\\
+%Deadlock is the situation where cars have been stuck for a period of time in the `intersection zone' without entering or leaving.
 
+%To test the implementation of our system we ran some simulations 
+To compare performances of the system over different paradigms and with different parameters, we ran
+multiple experimental simulations.
+The parameters that we changed over the different tests are from three classes: the paradigm, the speed of the cars, and the complexity.
+For paradigm it is meant the use of  a traffic light regulated intersection versus a pure reactive approach.
+As for complexity, we can increase it by allowing the cars to turn in order to reach any destination, or we can use a simpler system where cars can only go straight.
+The car speed is changed over three base cases: slow ( 30 km/h), medium (40 km/h) and fast (60 km/h).
+It is worth mentioning that the advised speed when turning the car in 90 degrees turns inside urban areas is around or below 30 km/h. %todo find reference
 
-
+When simulating with traffic lights enabled, we test two intervals of time that regulate the duration of the green light.
+We have an interval window of approximately 1 minute, that reflects a realistic scenario according to our observation of real life intersections.
+We also test a much shorter window of 20 seconds, that should improve performance under the assumptions that:
+\begin{enumerate}
+\item autonomous vehicles can react faster than human drivers, so they can start moving immediately after the traffic light turns green compared to human drivers that could be slow or distracted;
+\item shorter windows of time allow the traffic to be managed evenly ... %continue
+\end{enumerate}

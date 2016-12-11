@@ -27,7 +27,7 @@ public class Intersection : MonoBehaviour{
 	private int lightRate; //number of frames
 	private int DEADLOCK = 500, deadCtr=0, precpres=0;
 	private bool sameDeadlock = false;
-	private int TrafficLight_RATE = 1200;
+	private int TrafficLight_RATE = 1200;//20secs -> * 3  ~ 1 m;
 
 	public bool writeResults = false;
 	public bool trafficLightMode = false;
