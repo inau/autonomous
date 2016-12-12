@@ -5,6 +5,35 @@
 \label{figure:classdiagram}
 \end{figure}
 
+Post-research we were in a limbo, since the landscape of tooling that can be used for setting up experiments in this field of studies is  quite  vast.
+However it was decided early in the proces that it would be mainly software simuation, due to the fact that robots have a higher cost and getting the amount of agents that makes these types of studies interesting is somewhat higher than a dozen of robots.
+
+\subsection{Simulation Tools}
+Performing simulations is not trivial. Different criteria should be met depending on the accuracy of the simulation that is to be performed.
+In particular one should decide what level of abstraction fits the scenario, as 1:1 simulations are significantly harder to model, but might not necessarilly add value matching the increased complexity.\\
+
+This introduces the question, what modelling complexity is sufficient for modelling our problem?\\
+
+While the real world has three dimensions, we only need a two dimensional model.
+The height dimension is not required since we can consider every agent to occupy a space in two dimensional space.
+Restricting the simulated world to only two axis makes the model alot simpler to model.
+If this was a simulation for aircrafts the height dimension would make a lot more sense to include.\\
+%Another point is that we need the capability of being able to express physical shapes and collisions between these shapes.\\
+%being able to apply kinematic forces to these shapes.
+
+Two tools have been considered for doing the simulated world. One was the GazeboSimulator, which is a widely adopted tool in the robotics community.
+Another was doing a simulation using game development tools, in particular Unity3D.
+
+While both tools provide the functionality we need such as physics simulation in 2D/3D  environments, the degree of tools supported out-of-the-box varies.
+Gazebo has robotic simulations as being its main function, and hence has alot of useful tools for robotics integrated into it.
+Unity3D on the other hand is a general-purpose tool so it requires some tailoring to get the same functionality as Gazebo.
+
+Unity3D however is a strong competitor due to the fact that we have prior experience using this tool. It is easy to go from concept to an actual prototype rapidly. And last but not least has a thriving community of professionals, academics and hobbyists aspiring to make the software great.\\
+Our solution is built using Unity3D.\\
+
+The choice, albeit it might seem arbitrary, is based on the fact that \textit{Gazebo} has a very steep learning curve.
+
+\subsection{Software components}
 As we have settled on using Unity3D we work within its boundaries.
 It is component driven, meaning every object in the world consists of a collection of components and a transform - the transform is the objects spatial information.
 These components can be either colliders, renderers, or custom scripts, and objects can contain other objects - they can be composite.
@@ -12,22 +41,23 @@ These components can be either colliders, renderers, or custom scripts, and obje
 The implementation was done by splitting the work in three major blocks. One was \textit{the vehicle model}, another was \textit{the intersection model} and the last \textit{the reactive controller} for the car.
 An overview of our software package is depicted on figure \ref{figure:classdiagram}.
 
-\begin{itemize}
+%\begin{itemize}
 %\item Presentation of our model.
 %\item Intersection w/wo traffic lights. Cars going straight vs. cars turning.
 %\item Car model and sensor modelling (sick vs simplified directional).
 %\item Graph for navigation.
 %\item Reactive controller.
 %\item Special rules (right hand).
-\item Sensor range limitation based on braking distance considerations.
-\item SimScale to RealWorldScale
-\end{itemize}
+%\item Sensor range limitation based on braking distance considerations.
+%\item SimScale to RealWorldScale
+%\end{itemize}
 
-\subsection{The World Model}
+\subsubsection{The World Model}
 As observed in the real world, multiple intersection models exist, three lane and 4 lane intersections are the most common ones.
 The style can be either with the roundabout approach, which essentially rules out the left turn complication or a traditional 4 lane intersection where going left crosses the opposing traffics lane.
 
 In our model we mainly focus on a single lane 4 way intersection.\\ We tried different intersection representations as can be seen on figures \ref{figure:graph} and \ref{figure:graphs}.
+
 %\textbf{insert simple intersection images - maybe graph images from unity}
 \begin{figure}
 \centering
@@ -54,7 +84,15 @@ Every combination of origin and destination pair has one path.
 
 While this does not provide alot of flexibility in straying from the path, the simplicity makes the model really easy to implement and adjust.
 
-\subsubsection{The traffic lights}
+Once we reached the test phase we also realised that we needed to change the values to real world values.
+
+We translated our cars to being a fixed meter value. This value was not arbitrarly chosen, it was based of values from the range in which cars of that class belong to, namely compact car.
+Compact category covers cars such as Ford Focus, lengths are between 4.1 and 4.45 meters for hatchbacks and a bit more for sedans, saloons and station wagons.
+The simulation car size was 0.8 units. We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
+Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.\\
+
+\noindent
+\textbf{The traffic lights}\\
 This is an attempt to mimic traffic light regulated intersections.
 The lights change at intervals chosen in regards to our experiences with intersections. 
 These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
@@ -67,11 +105,11 @@ We did experiments with different interval windows.
 \label{figure:tesla_sens}
 \end{figure}
 
-\subsection{The Car Model}
+\subsubsection{The Car Model}
 The way the car has been modelled is using a interface which essentially contains actions such as accellerating or decellerating, braking, and turning left or right.
 This abstraction simplifies the step of going from a virtual model to a physical one.
 The interface provides loose coupling between the controller and the underlying vehicle implementation.
-This seperation makes it simple to develop multiple types of controllers or vehicles.
+This seperation makes it simple to develop multiple types of controllers or vehicles.\\
 
 \begin{figure}
 \centering
@@ -80,7 +118,8 @@ This seperation makes it simple to develop multiple types of controllers or vehi
 \label{figure:unity_sens}
 \end{figure}
 
-\subsubsection{The sensors}
+\noindent
+\textbf{The sensors}\\
 Studying autonomous vehicles, such as the Tesla's we realised how much sensing is actually integrated in these marvels.
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
@@ -89,19 +128,21 @@ We focused on mimicking the frontal sensors and the cross-traffic sensors.
 We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
 The sensing is done similar to the current generation of autonomous vehicles. We mimick 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters.
 
-
-
-\subsection{The Reactive Controller}
+\subsubsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
 The vision was to have multiple different controllers and be able to hotswap these for the simulation.
-Later versions also included constructs for priority such as right hand rule. A finer grained distinction between moving objects and their movement in relation to the agent.
+Later versions also included constructs for priority such as the right hand rule and a finer grained distinction between moving objects and their movement in relation to the agent.\\
 
-The controller started by initially doing collision avoidance.
-This is achieved by acting directly on the frontal sensor values.
+Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.
+The 180 degreee cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
+We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.
+This reduces the risk of vehicles being overly cautious and stopping in intersections with lots of slow moving vehicle, especially if it is still possible to pass through.
+Additionally the braking distance is not as big at lower velocities - which makes this approach viable.\\
+
+The controller has been reiterated multiple times: initially it was only doing collision avoidance.
+This was achieved by acting directly on the frontal sensor values.
 The earliest versions only had one threshold. If anything was closer than the given threshold the car would not move.
-While this avoids colliding with anything infront, it does not handle obstacle avoidance very well.
-
-
-
-We did another version which basically trails behind the car in front.
+While this avoids colliding with anything infront, it does not handle following a car infront very well.
+We did another version which trails behind the car in front.
 This is done using the delta distance rather than raw distance - if both vehicles move at the same speed the delta stays zero.
+If the gap closes it gains a negative value and if the gap increases it gains a positive value.
