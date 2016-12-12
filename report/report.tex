@@ -54,22 +54,9 @@
 \subsection{Motivation}
 \input{c/theory.tex}
 
-\subsection{Problem Statement}
-The previously obtained insights about robot control, intersection management and previous research led us to the following plan of attack:
-
-\begin{quotation}
-The goal is to explore the possibility of building a decentralized system which can guide autonomous cars through intersections. 
-The current research and solutions we have found are focused around centralized systems. 
-
-Centralized systems rely alot on scheduling and coordination in a 'global' scale, 
-while the decentralized system we envision would be built on a reactive approach which is centered around local state. 
-
-We would like to build a prototype using the decentralized approach and compare results to an existing centralized solution.
-\end{quotation}
-
 \section{Considerations}
 Post-research we were in a limbo, since the landscape of tooling that can be used for setting up experiments in this field of studies is  quite  vast.
-However it was decided early in the proces that it would be mainly software simuation, due to the fact that robots have a higher cost and getting the amount of agents that makes these types of studies interesting is somewhat higher than a dozen.
+However it was decided early in the proces that it would be mainly software simuation, due to the fact that robots have a higher cost and getting the amount of agents that makes these types of studies interesting is somewhat higher than a dozen of robots.
 
 \subsection{Simulation Tools}
 Performing simulations is not trivial. Different criteria should be met depending on the accuracy of the simulation that is to be performed.
@@ -80,8 +67,8 @@ This introduces the question, what modelling complexity is sufficient for modell
 While the real world has three dimensions, we only need a two dimensional model.
 The height dimension is not required since we can consider every agent to occupy a space in two dimensional space.
 Restricting the simulated world to only two axis makes the model alot simpler to model.
-If this was a simulation for aircrafts the height dimension would make a lot more sense to include.
-Another point is that we need the capability of being able to express physical shapes and collisions between these shapes.\\
+If this was a simulation for aircrafts the height dimension would make a lot more sense to include.\\
+%Another point is that we need the capability of being able to express physical shapes and collisions between these shapes.\\
 %being able to apply kinematic forces to these shapes.
 
 Two tools have been considered for doing the simulated world. One was the GazeboSimulator, which is a widely adopted tool in the robotics community.
@@ -91,7 +78,8 @@ While both tools provide the functionality we need such as physics simulation in
 Gazebo has robotic simulations as being its main function, and hence has alot of useful tools for robotics integrated into it.
 Unity3D on the other hand is a general-purpose tool so it requires some tailoring to get the same functionality as Gazebo.
 
-Unity3D however is a strong competitor due to the fact that we have prior experience using this tool. It is easy to go from concept to an actual prototype rapidly.
+Unity3D however is a strong competitor due to the fact that we have prior experience using this tool. It is easy to go from concept to an actual prototype rapidly. And last but not least has a thriving community of professionals, academics and hobbyists aspiring to make the software great.\\
+Our solution is built using Unity3D.\\
 
 The choice, albeit it might seem arbitrary, is based on the fact that \textit{Gazebo} has a very steep learning curve.
 

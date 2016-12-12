@@ -25,7 +25,7 @@ The following will contain short presentations of the three canonical ways of do
 In our research we did not stumble upon any systems using purely reactive controllers, which we found interesting. This is due to the fact that the simplicity of the interaction with the environment should make pure reactive controllers quite safe.
 Simple schemes for collision avoidance are trivial to implement using pure reactive controllers.\\
 An example of such a controller can be expressed quite simple using only a frontal sensor. The rule could be phrased as while this sensor does not register anything in front of the vehicle for a certain distance accelerate else brake.\\
-The strength of this paradigm is that its highly reactive to the environment. There are no complex layers inbetween.\\
+The strength of this paradigm is that it is highly reactive to the environment. There are no complex layers inbetween.\\
 
 In contrast to the above paradigm there exits a paradigm named \textit{deliberate control}, or alternatively Sense-Plan-Act.
 Compared to the reactive control it introduces a layer of planning.
@@ -47,3 +47,16 @@ Additionally, \citeauthor{texas}, define certain criteria that need to be met fo
 They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopt into our model.
 
 They mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.
+
+\subsection{Problem Statement}
+The previously obtained insights about robot control, intersection management and previous research led us to the following plan of attack:
+
+\begin{quotation}
+The goal is to explore the possibility of building a decentralized system which can guide autonomous cars through intersections. 
+The current research and solutions we have found are focused around centralized systems. 
+
+Centralized systems rely alot on scheduling and coordination in a 'global' scale, 
+while the decentralized system we envision would be built on a reactive approach which is centered around local state. 
+
+We would like to build a prototype using the decentralized approach and compare results to an existing centralized solution.
+\end{quotation}

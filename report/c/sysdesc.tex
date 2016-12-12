@@ -3,6 +3,14 @@ It is component driven, meaning every object in the world consists of a collecti
 These components can be either colliders, renderers, or custom scripts, and objects can contain other objects - they can be composite.
 
 The implementation was done by splitting the work in three major blocks. One was \textit{the vehicle model}, another was \textit{the intersection model} and the last \textit{the reactive controller} for the car.
+An overview of our software package is depicted on figure \ref{figure:classdiagram}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.6]{img/classdiagram}
+\caption{Overview of Unity3D software package}
+\label{figure:classdiagram}
+\end{figure}
 
 \begin{itemize}
 %\item Presentation of our model.
@@ -19,8 +27,24 @@ The implementation was done by splitting the work in three major blocks. One was
 As observed in the real world, multiple intersection models exist, three lane and 4 lane intersections are the most common ones.
 The style can be either with the roundabout approach, which essentially rules out the left turn complication or a traditional 4 lane intersection where going left crosses the opposing traffics lane.
 
-In our model we mainly focus on a single lane 4 way intersection.\\
-\textbf{insert simple intersection images - maybe graph images from unity}
+In our model we mainly focus on a single lane 4 way intersection.\\ We tried different intersection representations as can be seen on figures \ref{figure:graph} and \ref{figure:graphs}.
+%\textbf{insert simple intersection images - maybe graph images from unity}
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{img/graph.png}
+\caption{Image of the underlying graph representation for a four way inersection.}
+\label{figure:graph}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[height=75px]{img/graph-old1.png}
+\includegraphics[height=75px]{img/graph-old2.png}
+\includegraphics[height=75px]{img/graph-old3.png}
+\caption{Image of the previous versions of the underlying graph representation.}
+\label{figure:graphs}
+\end{figure}
+
 %We also consider a 4 way roundabout.
 
 We represent these intersection models using an underlying directed graph.
@@ -42,9 +66,26 @@ The way the car has been modelled is using a interface which essentially contain
 This abstraction simplifies the step of going from a virtual model to a physical one with robot actors.
 This interface is then used by the controller. This seperation makes it simple to develop multiple types of controllers.
 
+\begin{figure}
+\centering
+\includegraphics[scale=.2]{img/tesla_sensor}
+\caption{Image of the sensors integrated into a car.}
+\label{figure:tesla_sens}
+\end{figure}
+
+\subsubsection{The sensors}
+Studying autonomous vehicles, such as the Tesla's we realised how much sensing is actually integrated in these marvels. As seen on figure \ref{figure:tesla_sens} a lot of sensors exist for autonomous vehicles.\\
+We focused on mimicking the frontal sensors and the cross-traffic sensors.
+We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
+The sensing is done similar to the current generation of autonomous vehicles. We mimick 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in alot of different conditions and works in the range of 0 to 80 meters.
+
 \subsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
 The vision was to have multiple different controllers and be able to hotswap these for the simulation.
-Later versions also included constructs for priority such as right hand rule.
+Later versions also included constructs for priority such as right hand rule. A finer grained distinction between moving objects and their movement in relation to the agent.
 
+The controller started by initially doing collision avoidance.
+This is achieved by acting directly on the frontal sensor values.
+The earliest versions only had one threshold. If anything was closer than the given threshold the car would not move.
+While this avoids colliding with anything infront, it does not handle obstacle avoidance very well.
 
