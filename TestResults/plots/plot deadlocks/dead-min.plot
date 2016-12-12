@@ -34,7 +34,7 @@ set xtics( "30" 1, "40" 2, "60" 3)
 set key below
 set xlabel "car maximum speed [km/h]"
 set ylabel "deadlocks/min"
-set title "Throughput with traffic lights (20 seconds interval)"
+set title "Deadlocks with traffic lights (20 seconds interval)"
 file = "plotdata_deadlocksmin_tl20.txt"
 plot file index 0 w linespoints lt rgb "blue" title "straight",\
 	 file index 1 w linespoints lt rgb "gray" title "with turns"
