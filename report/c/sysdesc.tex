@@ -52,7 +52,7 @@ An overview of our software package is depicted on figure \ref{figure:classdiagr
 %\item SimScale to RealWorldScale
 %\end{itemize}
 
-\subsection{The World Model}
+\subsubsection{The World Model}
 As observed in the real world, multiple intersection models exist, three lane and 4 lane intersections are the most common ones.
 The style can be either with the roundabout approach, which essentially rules out the left turn complication or a traditional 4 lane intersection where going left crosses the opposing traffics lane.
 
@@ -89,9 +89,10 @@ Once we reached the test phase we also realised that we needed to change the val
 We translated our cars to being a fixed meter value. This value was not arbitrarly chosen, it was based of values from the range in which cars of that class belong to, namely compact car.
 Compact category covers cars such as Ford Focus, lengths are between 4.1 and 4.45 meters for hatchbacks and a bit more for sedans, saloons and station wagons.
 The simulation car size was 0.8 units. We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
-Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.
+Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.\\
 
-\subsubsection{The traffic lights}
+\noindent
+\textbf{The traffic lights}\\
 This is an attempt to mimic traffic light regulated intersections.
 The lights change at intervals chosen in regards to our experiences with intersections. 
 These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
@@ -104,11 +105,11 @@ We did experiments with different interval windows.
 \label{figure:tesla_sens}
 \end{figure}
 
-\subsection{The Car Model}
+\subsubsection{The Car Model}
 The way the car has been modelled is using a interface which essentially contains actions such as accellerating or decellerating, braking, and turning left or right.
 This abstraction simplifies the step of going from a virtual model to a physical one.
 The interface provides loose coupling between the controller and the underlying vehicle implementation.
-This seperation makes it simple to develop multiple types of controllers or vehicles.
+This seperation makes it simple to develop multiple types of controllers or vehicles.\\
 
 \begin{figure}
 \centering
@@ -117,7 +118,8 @@ This seperation makes it simple to develop multiple types of controllers or vehi
 \label{figure:unity_sens}
 \end{figure}
 
-\subsubsection{The sensors}
+\noindent
+\textbf{The sensors}\\
 Studying autonomous vehicles, such as the Tesla's we realised how much sensing is actually integrated in these marvels.
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
@@ -126,7 +128,7 @@ We focused on mimicking the frontal sensors and the cross-traffic sensors.
 We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
 The sensing is done similar to the current generation of autonomous vehicles. We mimick 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters.
 
-\subsection{The Reactive Controller}
+\subsubsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
 The vision was to have multiple different controllers and be able to hotswap these for the simulation.
 Later versions also included constructs for priority such as the right hand rule and a finer grained distinction between moving objects and their movement in relation to the agent.\\

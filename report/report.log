@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  12 DEC 2016 17:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  12 DEC 2016 18:02
 entering extended mode
 **D:/Workspaces/AutonomousCars/autonomous/report/report.tex
 (D:/Workspaces/AutonomousCars/autonomous/report/report.tex
@@ -355,35 +355,43 @@ File: img/graph-old3.png Graphic file (type png)
 <use img/graph-old3.png>
 Package pdftex.def Info: img/graph-old3.png used on input line 73.
 (pdftex.def)             Requested size: 114.18147pt x 75.28152pt.
- [6 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph.png>] <img/tesla_
-sensor.png, id=101, 1606.0pt x 922.44624pt>
+ [6 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
+
+ []
+
+<img/tesla_sensor.png, id=101, 1606.0pt x 922.44624pt>
 File: img/tesla_sensor.png Graphic file (type png)
 
 <use img/tesla_sensor.png>
-Package pdftex.def Info: img/tesla_sensor.png used on input line 102.
+Package pdftex.def Info: img/tesla_sensor.png used on input line 103.
 (pdftex.def)             Requested size: 321.19432pt x 184.48598pt.
 
-<img/sensors.png, id=102, 378.41376pt x 360.34625pt>
-File: img/sensors.png Graphic file (type png)
- <use img/sensors.png>
-Package pdftex.def Info: img/sensors.png used on input line 115.
-(pdftex.def)             Requested size: 189.2064pt x 180.17268pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--124
+Underfull \hbox (badness 10000) in paragraph at lines 109--113
 
  []
 
 [7 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph-old1.png> <D:/Work
 spaces/AutonomousCars/autonomous/report/img/graph-old2.png> <D:/Workspaces/Auto
-nomousCars/autonomous/report/img/graph-old3.png>] [8 <D:/Workspaces/AutonomousC
-ars/autonomous/report/img/tesla_sensor.png> <D:/Workspaces/AutonomousCars/auton
-omous/report/img/sensors.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 130--133
+nomousCars/autonomous/report/img/graph-old3.png> <D:/Workspaces/AutonomousCars/
+autonomous/report/img/tesla_sensor.png>]
+<img/sensors.png, id=109, 378.41376pt x 360.34625pt>
+File: img/sensors.png Graphic file (type png)
+ <use img/sensors.png>
+Package pdftex.def Info: img/sensors.png used on input line 116.
+(pdftex.def)             Requested size: 189.2064pt x 180.17268pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--139
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
+
+ []
+
+[8 <D:/Workspaces/AutonomousCars/autonomous/report/img/sensors.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 136--141
 
  []
 
@@ -414,10 +422,10 @@ LaTeX Warning: Float too large for page by 17.96812pt on input line 46.
 
 ) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
 (D:\Workspaces\AutonomousCars\autonomous\report\c/conclusion.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl [10] [11 <D:/Workspa
-ces/AutonomousCars/autonomous/report/img/plot_throughmin_notl.png> <D:/Workspac
-es/AutonomousCars/autonomous/report/img/plot_throughmin_tl.png> <D:/Workspaces/
-AutonomousCars/autonomous/report/img/plot_throughmin_tl20.png>]) [12]
+(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl) [10] [11 <D:/Worksp
+aces/AutonomousCars/autonomous/report/img/plot_throughmin_notl.png> <D:/Workspa
+ces/AutonomousCars/autonomous/report/img/plot_throughmin_tl.png> <D:/Workspaces
+/AutonomousCars/autonomous/report/img/plot_throughmin_tl20.png>]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux) ) 
 Here is how much of TeX's memory you used:
  2890 strings out of 493921
@@ -435,9 +443,9 @@ Here is how much of TeX's memory you used:
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (15 pages, 1939438 bytes).
+Output written on report.pdf (14 pages, 1950499 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 153 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
