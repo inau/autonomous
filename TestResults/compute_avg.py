@@ -173,19 +173,19 @@ def make_graph_comp(attr):
 	cmds.append('set key below')
 	cmds.append('plot "%s" index 0 w linespoints title "no t.l. straight",\
 	 "%s" index 1 w linespoints title "no t.l. turns",\
-	 "%s" index 2 w linespoints title "with t.l. 20sec straight",\
-	 "%s" index 3 w linespoints title "with t.l. 60sec straight",\
-	 "%s" index 4 w linespoints title "with t.l. 20sec turns",\
-	 "%s" index 5 w linespoints title "with t.l. 60sec turns"\
+	 "%s" index 2 w linespoints lt rgb "blue" title "with t.l. 20sec straight",\
+	 "%s" index 3 w linespoints lt rgb "red" title "with t.l. 60sec straight",\
+	 "%s" index 4 w linespoints lt rgb "gray" title "with t.l. 20sec turns",\
+	 "%s" index 5 w linespoints lt rgb "orange" title "with t.l. 60sec turns"\
 	 '%(datafn, datafn, datafn, datafn, datafn, datafn))
 	cmds.append('quit')
 	print >> f, '\n'.join(cmds)
 	f.close()
 	p.wait()
-	# try:
-	# 	os.unlink(datafn)
-	# except:
-	# 	pass
+	try:
+		os.unlink(datafn)
+	except:
+		pass
 	
 
 def clean_data(dictionary):
