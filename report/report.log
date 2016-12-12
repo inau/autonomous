@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  12 DEC 2016 15:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.26)  12 DEC 2016 17:45
 entering extended mode
 **D:/Workspaces/AutonomousCars/autonomous/report/report.tex
 (D:/Workspaces/AutonomousCars/autonomous/report/report.tex
@@ -298,28 +298,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--45
 
  []
 
-[3])
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--74
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
-
- []
-
-(D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
-<img/classdiagram.png, id=87, 614.295pt x 346.4443pt>
+[3]) (D:\Workspaces\AutonomousCars\autonomous\report\c/sysdesc.tex
+<img/classdiagram.png, id=83, 614.295pt x 346.4443pt>
 File: img/classdiagram.png Graphic file (type png)
 
 <use img/classdiagram.png>
@@ -330,72 +310,120 @@ Overfull \hbox (23.57983pt too wide) in paragraph at lines 3--4
  [][] 
  []
 
-[5 <D:/Workspaces/AutonomousCars/autonomous/report/img/classdiagram.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
+[4 <D:/Workspaces/AutonomousCars/autonomous/report/img/classdiagram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
+ []
 
-<img/graph.png, id=93, 515.9275pt x 411.5375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
+
+ []
+
+[5] <img/graph.png, id=93, 515.9275pt x 411.5375pt>
 File: img/graph.png Graphic file (type png)
  <use img/graph.png>
-Package pdftex.def Info: img/graph.png used on input line 34.
+Package pdftex.def Info: img/graph.png used on input line 64.
 (pdftex.def)             Requested size: 206.36734pt x 164.61208pt.
 
 <img/graph-old1.png, id=94, 332.24126pt x 265.99374pt>
 File: img/graph-old1.png Graphic file (type png)
 
 <use img/graph-old1.png>
-Package pdftex.def Info: img/graph-old1.png used on input line 41.
+Package pdftex.def Info: img/graph-old1.png used on input line 71.
 (pdftex.def)             Requested size: 94.03069pt x 75.28152pt.
  <img/graph-old2.png, id=95, 485.815pt x 326.21875pt>
 File: img/graph-old2.png Graphic file (type png)
 
 <use img/graph-old2.png>
-Package pdftex.def Info: img/graph-old2.png used on input line 42.
+Package pdftex.def Info: img/graph-old2.png used on input line 72.
 (pdftex.def)             Requested size: 112.11316pt x 75.28152pt.
 
 <img/graph-old3.png, id=96, 500.87125pt x 330.23375pt>
 File: img/graph-old3.png Graphic file (type png)
 
 <use img/graph-old3.png>
-Package pdftex.def Info: img/graph-old3.png used on input line 43.
+Package pdftex.def Info: img/graph-old3.png used on input line 73.
 (pdftex.def)             Requested size: 114.18147pt x 75.28152pt.
  [6 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph.png>] <img/tesla_
-sensor.png, id=102, 1606.0pt x 922.44624pt>
+sensor.png, id=101, 1606.0pt x 922.44624pt>
 File: img/tesla_sensor.png Graphic file (type png)
 
 <use img/tesla_sensor.png>
-Package pdftex.def Info: img/tesla_sensor.png used on input line 65.
+Package pdftex.def Info: img/tesla_sensor.png used on input line 102.
 (pdftex.def)             Requested size: 321.19432pt x 184.48598pt.
- [7 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph-old1.png> <D:/Wor
-kspaces/AutonomousCars/autonomous/report/img/graph-old2.png> <D:/Workspaces/Aut
-onomousCars/autonomous/report/img/graph-old3.png> <D:/Workspaces/AutonomousCars
-/autonomous/report/img/tesla_sensor.png>]
-<img/sensors.png, id=109, 378.41376pt x 360.34625pt>
+
+<img/sensors.png, id=102, 378.41376pt x 360.34625pt>
 File: img/sensors.png Graphic file (type png)
  <use img/sensors.png>
-Package pdftex.def Info: img/sensors.png used on input line 78.
+Package pdftex.def Info: img/sensors.png used on input line 115.
 (pdftex.def)             Requested size: 189.2064pt x 180.17268pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--87
+Underfull \hbox (badness 10000) in paragraph at lines 121--124
 
  []
 
-[8 <D:/Workspaces/AutonomousCars/autonomous/report/img/sensors.png>])
-(D:\Workspaces\AutonomousCars\autonomous\report\c/experiment.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
+[7 <D:/Workspaces/AutonomousCars/autonomous/report/img/graph-old1.png> <D:/Work
+spaces/AutonomousCars/autonomous/report/img/graph-old2.png> <D:/Workspaces/Auto
+nomousCars/autonomous/report/img/graph-old3.png>] [8 <D:/Workspaces/AutonomousC
+ars/autonomous/report/img/tesla_sensor.png> <D:/Workspaces/AutonomousCars/auton
+omous/report/img/sensors.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 130--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
+
+ []
+
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/experiment.tex [9]
+<img/plot_throughmin_notl.png, id=117, 481.8pt x 361.35pt>
+File: img/plot_throughmin_notl.png Graphic file (type png)
+
+<use img/plot_throughmin_notl.png>
+Package pdftex.def Info: img/plot_throughmin_notl.png used on input line 41.
+(pdftex.def)             Requested size: 240.8994pt x 180.67456pt.
+
+<img/plot_throughmin_tl.png, id=118, 481.8pt x 361.35pt>
+File: img/plot_throughmin_tl.png Graphic file (type png)
+
+<use img/plot_throughmin_tl.png>
+Package pdftex.def Info: img/plot_throughmin_tl.png used on input line 42.
+(pdftex.def)             Requested size: 240.8994pt x 180.67456pt.
+
+<img/plot_throughmin_tl20.png, id=119, 481.8pt x 361.35pt>
+File: img/plot_throughmin_tl20.png Graphic file (type png)
+
+<use img/plot_throughmin_tl20.png>
+Package pdftex.def Info: img/plot_throughmin_tl20.png used on input line 43.
+(pdftex.def)             Requested size: 240.8994pt x 180.67456pt.
+
+
+LaTeX Warning: Float too large for page by 17.96812pt on input line 46.
+
+) (D:\Workspaces\AutonomousCars\autonomous\report\c/discus.tex)
 (D:\Workspaces\AutonomousCars\autonomous\report\c/conclusion.tex)
-(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl [9]) [10]
+(D:\Workspaces\AutonomousCars\autonomous\report\report.bbl [10] [11 <D:/Workspa
+ces/AutonomousCars/autonomous/report/img/plot_throughmin_notl.png> <D:/Workspac
+es/AutonomousCars/autonomous/report/img/plot_throughmin_tl.png> <D:/Workspaces/
+AutonomousCars/autonomous/report/img/plot_throughmin_tl20.png>]) [12]
 (D:\Workspaces\AutonomousCars\autonomous\report\report.aux) ) 
 Here is how much of TeX's memory you used:
- 2891 strings out of 493921
- 41076 string characters out of 3144879
- 102334 words of memory out of 3000000
- 6134 multiletter control sequences out of 15000+200000
+ 2890 strings out of 493921
+ 41247 string characters out of 3144879
+ 102343 words of memory out of 3000000
+ 6133 multiletter control sequences out of 15000+200000
  6411 words of font info for 23 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  37i,18n,40p,438b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -403,13 +431,13 @@ Here is how much of TeX's memory you used:
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (13 pages, 1931908 bytes).
+Output written on report.pdf (15 pages, 1939438 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
