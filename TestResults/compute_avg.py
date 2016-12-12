@@ -182,10 +182,10 @@ def make_graph_comp(attr):
 	print >> f, '\n'.join(cmds)
 	f.close()
 	p.wait()
-	try:
-		os.unlink(datafn)
-	except:
-		pass
+	# try:
+	# 	os.unlink(datafn)
+	# except:
+	# 	pass
 	
 
 def clean_data(dictionary):
