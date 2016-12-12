@@ -1,0 +1,12 @@
+#collisions/min
+#wtl straight 20sec
+1	0.000000
+2	0.000000
+3	0.016386
+
+
+#wtl turns 20sec
+1	0.052690
+2	0.078070
+3	0.098850
+
