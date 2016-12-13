@@ -6,18 +6,19 @@
 \end{figure}
 
 Post-research we were in a limbo, since the landscape of tooling that can be used for setting up experiments in this field of studies is  quite  vast.
-However it was decided early in the proces that it would be mainly software simuation, due to the fact that robots have a higher cost and getting the amount of agents that makes these types of studies interesting is somewhat higher than a dozen of robots.
+However it was decided early in the process that it would be mainly software simulation, due to the fact that robots have a higher cost and getting the amount of agents that makes these types of studies interesting is somewhat higher than a dozen of robots.
 
 \subsection{Simulation Tools}
 Performing simulations is not trivial. Different criteria should be met depending on the accuracy of the simulation that is to be performed.
-In particular one should decide what level of abstraction fits the scenario, as 1:1 simulations are significantly harder to model, but might not necessarilly add value matching the increased complexity.\\
+In particular one should decide what level of abstraction fits the scenario, as 1:1 simulations are significantly harder to model, but might not necessarily add value matching the increased complexity.\\
 
 This introduces the question, what modelling complexity is sufficient for modelling our problem?\\
 
 While the real world has three dimensions, we only need a two dimensional model.
 The height dimension is not required since we can consider every agent to occupy a space in two dimensional space.
-Restricting the simulated world to only two axis makes the model alot simpler to model.
-If this was a simulation for aircrafts the height dimension would make a lot more sense to include.\\
+Restricting the simulated world to only two axis makes the model a lot simpler to model.
+If this was a simulation for aircrafts the height dimension would make a lot more sense to include,
+but in this case all agent lay on the same plane.\\
 %Another point is that we need the capability of being able to express physical shapes and collisions between these shapes.\\
 %being able to apply kinematic forces to these shapes.
 
@@ -25,10 +26,13 @@ Two tools have been considered for doing the simulated world. One was the Gazebo
 Another was doing a simulation using game development tools, in particular Unity3D.
 
 While both tools provide the functionality we need such as physics simulation in 2D/3D  environments, the degree of tools supported out-of-the-box varies.
-Gazebo has robotic simulations as being its main function, and hence has alot of useful tools for robotics integrated into it.
+Gazebo's main function is robotic simulations, and hence it has a lot of useful tools for robotics integrated into it.
 Unity3D on the other hand is a general-purpose tool so it requires some tailoring to get the same functionality as Gazebo.
 
-Unity3D however is a strong competitor due to the fact that we have prior experience using this tool. It is easy to go from concept to an actual prototype rapidly. And last but not least has a thriving community of professionals, academics and hobbyists aspiring to make the software great.\\
+Nevertheless, Unity3D is a strong competitor due to the fact that we have prior experience using this tool, and it has many built in features that handle graphics and physics. 
+With little experience, it is easy to go from concept to an actual prototype rapidly.
+And last but not least it provides the support of a thriving community of professionals, academics and hobbyists.\\
+%aspiring to make the software great.\\
 Our solution is built using Unity3D.\\
 
 The choice, albeit it might seem arbitrary, is based on the fact that \textit{Gazebo} has a very steep learning curve.
@@ -36,7 +40,7 @@ The choice, albeit it might seem arbitrary, is based on the fact that \textit{Ga
 \subsection{Software components}
 As we have settled on using Unity3D we work within its boundaries.
 It is component driven, meaning every object in the world consists of a collection of components and a transform - the transform is the objects spatial information.
-These components can be either colliders, renderers, or custom scripts, and objects can contain other objects - they can be composite.
+These components can be either colliders, renderers, or custom scripts, and objects can contain other objects as they can be composite.
 
 The implementation was done by splitting the work in three major blocks. One was \textit{the vehicle model}, another was \textit{the intersection model} and the last \textit{the reactive controller} for the car.
 An overview of our software package is depicted on figure \ref{figure:classdiagram}.
@@ -53,7 +57,7 @@ An overview of our software package is depicted on figure \ref{figure:classdiagr
 %\end{itemize}
 
 \subsubsection{The World Model}
-As observed in the real world, multiple intersection models exist, three way and four way intersections are the most common ones.
+As observed in the real world, multiple intersection models exist. Three way and four way intersections are the most common ones.
 The style can be either with the roundabout approach, which essentially rules out the left turn complication or a traditional four way intersection where going left crosses the opposing traffics lane.
 
 In our model we mainly focus on a single lane 4 way intersection.\\ We tried different intersection representations as can be seen on figures \ref{figure:graph} and \ref{figure:graphs}.
@@ -62,7 +66,7 @@ In our model we mainly focus on a single lane 4 way intersection.\\ We tried dif
 \begin{figure}
 \centering
 \includegraphics[scale=.4]{img/graph.png}
-\caption{Image of the underlying graph representation for a four way inersection.}
+\caption{Image of the underlying graph representation for a four way intersection.}
 \label{figure:graph}
 \end{figure}
 
@@ -71,31 +75,38 @@ In our model we mainly focus on a single lane 4 way intersection.\\ We tried dif
 \includegraphics[height=75px]{img/graph-old1.png}
 \includegraphics[height=75px]{img/graph-old2.png}
 \includegraphics[height=75px]{img/graph-old3.png}
-\caption{Image of the previous versions of the underlying graph representation.}
+\caption{Image of the previous versions of the underlying navigation graph representation.}
 \label{figure:graphs}
 \end{figure}
 
 %We also consider a 4 way roundabout.
 
-We represent these intersection models using an underlying directed graph.
- A car agent in our environment is seeded with information about its origin and its destination.
-These points are vertices in our graph. 
-Every combination of origin and destination pair has one path.
+We represent these intersection models using an underlying directed graph for navigation.
+ A car agent in our environment is seeded with information about its origin and its destination.\\
+These points are vertices in our graph.\\
+Edges connecting the vertices also contain information about the final destination of that path, in addition to the two vertices it connects.
+All vertices figure as control points that a car has to pass through in order to reach a certain destination. \\
+After passing each control point, the car controller will check among the edges leaving from that node which one leads to the desired destination.
+If the path to the desired destination is not present in such edges, the default behaviour is to just keep going on the same direction.
+%Every combination of origin and destination pair has one path.
 
-While this does not provide alot of flexibility in straying from the path, the simplicity makes the model really easy to implement and adjust.
+While this does not provide a lot of flexibility in straying from the path, the simplicity makes the model really easy to implement and adjust.
 
-Once we reached the test phase we also realised that we needed to change the values to real world values.
 
-We translated our cars to being a fixed meter value. This value was not arbitrarly chosen, it was based of values from the range in which cars of that class belong to, namely compact car.
-Compact category covers cars such as Ford Focus, lengths are between 4.1 and 4.45 meters for hatchbacks and a bit more for sedans, saloons and station wagons.
-The simulation car size was 0.8 units. We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
+Once we reached the test phase we also realised that we needed to change measures to real world scale.
+
+We translated our cars to being of a fixed size in meters, and based all the other units according to this value. 
+This ratio was not arbitrarily chosen, it was based from values in which range cars of that class belong to, namely compact cars.
+Compact category covers cars such as Ford Focus, which lengths are between 4.1 and 4.5 meters for hatchbacks and a bit more for sedans, saloons and station wagons.
+The car size is of 0.8 units in the simulation environment (~10 pixel = 1 unit).
+We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
 Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.\\
 
 \noindent
 \textbf{The traffic lights}\\
 This is an attempt to mimic traffic light regulated intersections.
 The lights change at intervals chosen in regards to our experiences with intersections. 
-These values can vary alot from intersection to intersection - and are highly influenced by traffic flow during the day. 
+These values can vary a lot from intersection to intersection - and are highly influenced by traffic flow during the day. 
 We did experiments with different interval windows.
 
 \begin{figure}
@@ -106,10 +117,10 @@ We did experiments with different interval windows.
 \end{figure}
 
 \subsubsection{The Car Model}
-The way the car has been modelled is using a interface which essentially contains actions such as accellerating or decellerating, braking, and turning left or right.
+The way the car has been modelled is using a interface which essentially contains actions such as accelerating, decelerating, braking, and turning left or right.
 This abstraction simplifies the step of going from a virtual model to a physical one.
 The interface provides loose coupling between the controller and the underlying vehicle implementation.
-This seperation makes it simple to develop multiple types of controllers or vehicles.\\
+This separation makes it simple to develop multiple types of controllers or vehicles.\\
 
 \begin{figure}
 \centering
@@ -126,15 +137,18 @@ The figure is not representative for all autonomous vehicles - but can be seen a
 
 We focused on mimicking the frontal sensors and the cross-traffic sensors.
 We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
-The sensing is done similar to the current generation of autonomous vehicles. We mimick 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters.
+The sensing is done similar to the current generation of autonomous vehicles. We mimic 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters.
+
+
+In our implementation of the sensors, we use two main angles 
 
 \subsubsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
-The vision was to have multiple different controllers and be able to hotswap these for the simulation.
+The vision was to have multiple different controllers and be able to hot swap these for the simulation.
 Later versions also included constructs for priority such as the right hand rule and a finer grained distinction between moving objects and their movement in relation to the agent.\\
 
 Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.
-The 180 degreee cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
+The 180 degree cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
 We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.
 This reduces the risk of vehicles being overly cautious and stopping in intersections with lots of slow moving vehicle, especially if it is still possible to pass through.
 Additionally the braking distance is not as big at lower velocities - which makes this approach viable.\\
@@ -142,7 +156,7 @@ Additionally the braking distance is not as big at lower velocities - which make
 The controller has been reiterated multiple times: initially it was only doing collision avoidance.
 This was achieved by acting directly on the frontal sensor values.
 The earliest versions only had one threshold. If anything was closer than the given threshold the car would not move.
-While this avoids colliding with anything infront, it does not handle following a car infront very well.
+While this avoids colliding with anything in front, it does not handle following a car in front very well.
 We did another version which trails behind the car in front.
 This is done using the delta distance rather than raw distance - if both vehicles move at the same speed the delta stays zero.
 If the gap closes it gains a negative value and if the gap increases it gains a positive value.
