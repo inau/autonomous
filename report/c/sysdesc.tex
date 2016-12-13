@@ -138,9 +138,21 @@ The figure is not representative for all autonomous vehicles - but can be seen a
 We focused on mimicking the frontal sensors and the cross-traffic sensors.
 We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
 The sensing is done similar to the current generation of autonomous vehicles. We mimic 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters.
+\newline
+
+In our implementation of the sensors, we work with two main angles: $\alpha$ and $\beta$, where $\alpha$  covers the frontal part of the car and $\beta$ the sides.
+In figure \ref{figure:unity_sens}, the three white lines represent the $\alpha$ width, which is of $\pi/6$ radiants starting from the centre of the car, and are respectively drawn at [$-\alpha/2, 0, \alpha/2$] angles in relation to the front of the car.\\
+Every object detected in this range is considered to be in front of the car.\\
+
+The $\beta$ angle is $\pi$ radiants wide, so everything caught between $\alpha$ and $\beta$ is considered to be to the side of the car.
 
 
-In our implementation of the sensors, we use two main angles 
+We also considered that the distance at which to sense other agents should increase with the speed.
+This is due to the fact that greater speed results in a longer braking distance, hence the need to react sooner.\\
+The sensors' range is represented by the green circle in the figure. \\
+The range increases and decreases linearly with the speed of the car, leaving a minimum size that ensures no one enters in too close proximity without notice. 
+
+
 
 \subsubsection{The Reactive Controller}
 This was developed incrementally. Initial versions were done using only collision avoidance.
@@ -150,7 +162,7 @@ Later versions also included constructs for priority such as the right hand rule
 Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.
 The 180 degree cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
 We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.
-This reduces the risk of vehicles being overly cautious and stopping in intersections with lots of slow moving vehicle, especially if it is still possible to pass through.
+This reduces the risk of vehicles being overly cautious and stopping in intersections with lots of slow moving vehicles, especially if it is still possible to pass through.
 Additionally the braking distance is not as big at lower velocities - which makes this approach viable.\\
 
 The controller has been reiterated multiple times: initially it was only doing collision avoidance.
@@ -158,5 +170,7 @@ This was achieved by acting directly on the frontal sensor values.
 The earliest versions only had one threshold. If anything was closer than the given threshold the car would not move.
 While this avoids colliding with anything in front, it does not handle following a car in front very well.
 We did another version which trails behind the car in front.
-This is done using the delta distance rather than raw distance - if both vehicles move at the same speed the delta stays zero.
-If the gap closes it gains a negative value and if the gap increases it gains a positive value.
+This is done using the delta distance rather than raw distance.
+For delta distance it is meant the difference between the distance measured at a given time $t$, and the same distance measured at $t-1$. 
+If two vehicles move at the same speed, one in front of the other, their distance is constant and the delta stays zero.
+If the gap closes, the delta gains a negative value and the controller can react by braking. 
