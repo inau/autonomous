@@ -30,10 +30,10 @@ We also test a much shorter window of 20 seconds, that should improve performanc
 
 \subsection{Experimental results}
 
-We measure performance of the systems mainly in terms of throughput, namely the amount of cars that get through the intersection per minute.
-However, we also account for other factors, like the amount of collisions, the amount of deadlock situations, the time at which these occur and the frequency of these events.
-
-A deadlock is the condition in which cars have been stuck in the intersection zone with no one entering or leaving for a period of time (about 10 seconds). This is represented in figure \ref{fig:deadlock}.
+We measure performance of the systems mainly in terms of throughput, namely the amount of cars that get through the intersection per minute.\\
+However, we also account for other factors, like the amount of collisions, the amount of deadlock situations, the time at which these occur and the frequency of these events.\\
+\noindent
+A deadlock is the condition in which cars have been stuck in the intersection zone with no one entering or leaving for a period of time (about 10 seconds). This is represented in figure \ref{fig:deadlock}.\\
 
 \begin{figure}
 \centering
@@ -42,7 +42,7 @@ A deadlock is the condition in which cars have been stuck in the intersection zo
 \caption{Two deadlocks: no car is able to advance and the intersection is blocked}
 \label{fig:deadlock}
 \end{figure}
-
+\noindent
 To test the implementation of our system we also account for information such as the number of cars spawned, number of cars "lost" (not reaching the correct destination) and the number of cars present in the intersection zone at the occurrence of a deadlock or collision.
 
 
@@ -60,17 +60,15 @@ On the other hand, we don't take into account neither fuel consumption nor gas e
 
 The graphs in figure \ref{fig:throughput} show the different throughputs of the system running with different factors.
 %The graphs are divided by paradigm: the first one shows a pure reactive approach, while the second and the third one show the system working with traffic lights in intervals of 60 and 20 seconds respectively.
-The graphs are divided by complexity: the first one shows the different throughputs when the cars can only go straight, while in the second one the cars can also make turns.
+The graphs are divided by complexity: the first one shows the different throughputs when the cars can only go straight, while in the second one the cars can also make turns.\\
 
 %For each graph, two versions of the same paradigm are compared: one where the agents only go straight and another one where they can turn in any directions.
-For each graph, three regulation approaches are compared: the pure reactive approach, and the two with traffic lights, with light intervals of 60 and 20 seconds respectively.
-Finally, for each case multiple tests are ran with cars moving at different speeds, that are represented on the x axis.
-\newline
 
-The first thing that can be evinced from the graphs is that when adding complexity, namely the ability to turn, throughput drops in all three cases.
+For each graph, three regulation approaches are compared: the pure reactive approach, and the two with traffic lights, with light intervals of 60 and 20 seconds respectively.\\
+Finally, for each case multiple tests are ran with cars moving at different speeds, that are represented on the x axis.\\
+
+The first thing that can be evinced from the graphs is that when adding complexity, namely the ability to turn, throughput drops in all three cases.\\
 %This can be easily seen in the fact that in every graph the darkest line (cars going straight) is above the lightest one.
-
-
 This is mostly due to the fact that deadlocks are produced at a higher rate when turning is enabled, as will be later discussed.
 
 The main purpose of the graph though, is the comparison between the pure reactive approach (green), the traffic light approach (red), and the approach with traffic lights with a faster switch interval (blue).
