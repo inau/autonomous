@@ -42,7 +42,7 @@
 
 set term png
 set out "plot_collisionsstraight.png"
-set yrange [0:0.1]
+set yrange [0:0.25]
 set xrange [0:4]
 set xtics( "30" 1, "40" 2, "60" 3)
 set key below
@@ -58,7 +58,7 @@ plot fileno index 0 w linespoints lt rgb "green" title "pure reactive",\
 
 set term png
 set out "plot_collisionsturns.png"
-set yrange [0:0.1]
+set yrange [0:0.25]
 set xrange [0:4]
 set xtics( "30" 1, "40" 2, "60" 3)
 set key below

@@ -1,6 +1,6 @@
 #collisions/min
 #notl straight
-1	0.000000
+#1	0.000000
 2	0.093459
 3	0.037303
 
