@@ -8,9 +8,9 @@
 %To test the implementation of our system we ran some simulations 
 To compare performances of the system over different paradigms and with different factors, we ran
 multiple experimental simulations.
-The factors that we changed over the different tests are from three classes: the paradigm, the speed of the cars, and the complexity.
+The factors that we changed over the different tests are from three classes: the regulation, the speed of the cars, and the complexity.
 
-For paradigm it is meant the use of  a traffic light regulated intersection versus a pure reactive approach.
+For regulation it is meant the use of  a traffic light regulated intersection versus an unregulated intersection pure reactive approach.
 It is worth pointing out that when using traffic lights, the agents of the system still make use of their underlying reactive layer for obstacle avoidance.
 They also do so in the same way as they do without the traffic lights enabled.
 Traffic lights have the only purpose of regulating traffic flow by limiting its direction and changing it at fixed intervals.
@@ -63,7 +63,7 @@ The graphs in figure \ref{fig:throughput} show the different throughputs of the 
 The graphs are divided by complexity: the first one shows the different throughputs when the cars can only go straight, while in the second one the cars can also make turns.
 
 %For each graph, two versions of the same paradigm are compared: one where the agents only go straight and another one where they can turn in any directions.
-For each graph, three paradigms are compared: the pure reactive approach, and the two with traffic lights, with light intervals of 60 and 20 seconds respectively.
+For each graph, three regulation approaches are compared: the pure reactive approach, and the two with traffic lights, with light intervals of 60 and 20 seconds respectively.
 Finally, for each case multiple tests are ran with cars moving at different speeds, that are represented on the x axis.
 \newline
 
