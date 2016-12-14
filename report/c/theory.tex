@@ -3,8 +3,9 @@ First we will briefly explain why intersection management is deemed relevant, fo
 
 \subsubsection{Intersection Management}
 The field of intersection management tries to deal with the challenges arising when trying to organize multiple entities to efficiently pass through a critical zone.\\
-The challenge to solve is to go from origin to destination while not colliding with other entities.\\
+The problem to solve is to go from origin to destination while not colliding with other entities.\\
 
+\marginnote{Determining priority}
 In the real world these challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority over the others.\\
 
 Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation, however our starting point is rooted in the way that traffic is handled in Europe where rules are mostly homogenous.\\
@@ -14,15 +15,17 @@ Traffic-legislation contains a set of rules that makes it easy to determine what
 Intersections are also designed in such a way that agents have an easier task at assigning priorities. 
 This includes tools such as traffic lights, road markings and/or signs.
 
+\marginnote{Intersection types}
 The intersection models that we are interested in are 4 way cross-intersections both with and without the use of traffic lights.
 This is due to the fact that these types of intersections are the most common ones in our local area. Additionally a smaller intersection still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from or travels to one of the ways.
 
 \subsubsection{Control Paradigms}
 We use the term agents for robots or other actors moving within an environment.\\
+\marginnote{Theory}
 We use the term environment as being synonymous to the world in which the agent is confined.
-The following will contain short presentations of the three canonical ways of doing robot control, based on the theory presented in the textbook The Robotics Primer\citep{book:mataric}, and chapters 12 to 15 on the subject.
-It is nowhere near as being as exhaustive on the subject as the primer.\\
+The following will contain short presentations of the three canonical ways of doing robot control, based on the theory presented in the textbook The Robotics Primer\citep{book:mataric}, and chapters 12 to 15 on the subject.\\
 
+\marginnote{Reactive}
 \textit{Reactive Control} (also named Sense-Act) is a paradigm that acts directly on sensory input.\\
 In our research we did not stumble upon any systems using purely reactive controllers, which we found interesting. This is despite the fact that the simplicity of the interaction with the environment should make pure reactive controllers quite safe.
 Simple schemes for collision avoidance are trivial to implement using pure reactive controllers.\\
@@ -30,14 +33,15 @@ An example of such a controller can be expressed quite simply using only a front
 %while this sensor does not register anything in front of the vehicle for a certain distance accelerate else brake.\\
 The strength of this paradigm is that it is highly reactive to the environment. There are no complex layers in between.\\
 
-In contrast to the above paradigm there exits a paradigm named \textit{deliberate control}, or alternatively Sense-Plan-Act.
+\marginnote{Deliberate}
+In contrast to the above paradigm there exists a paradigm named \textit{deliberate control}, or alternatively Sense-Plan-Act.
 Compared to the reactive control it introduces a layer of planning.
 The additional step however requires more information about the environment.
 
-Any change to the environment would also invalidate the current plan as this is not factored in.
 This is computationally heavier since it includes sensing, planning of a step, execution of the step and starting over.
-A plan can consist of multiple steps which are required to reach a goal.\\
+This also introduces the challenge of how to represent the environment, since a bad representation could reduce performance significantly(excessive memory usage or slow lookup times).\\
 
+\marginnote{Hybrid}
 The third canonical way of doing robot control is a hybrid of the two above, and hence it is also referred to as \textit{hybrid control}.
 It resides somewhere in the middle where it has abstractions of routines using reactive controllers - but uses a higher level mechanism to combine these for advanced control schemes.\\
 
@@ -46,10 +50,10 @@ It resides somewhere in the middle where it has abstractions of routines using r
 \input{c/relwork.tex}\\
 
 %In particular we were inspired by \citeauthor{texas}\citep{texas}, which explores the same area as us.\\
-Additionally, \citeauthor{texas}, define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesful.
-They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopted into our model.
+%Additionally, \citeauthor{texas}, define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesful.
+%They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopted into our model.
 
-They also mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.
+%They also mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.
 
 \subsection{Problem Statement}
 The previously obtained insights about robot control, intersection management and previous research led us to the following plan of attack:
