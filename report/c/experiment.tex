@@ -10,15 +10,15 @@ To compare performances of the system over different paradigms and with differen
 multiple experimental simulations.
 The factors that we changed over the different tests are from three classes: the regulation, the speed of the cars, and the complexity.
 
-For regulation it is meant the use of  a traffic light regulated intersection versus an unregulated intersection pure reactive approach.
+For regulation it is meant the use of  a traffic light regulated intersection versus an unregulated intersection (pure reactive).
 It is worth pointing out that when using traffic lights, the agents of the system still make use of their underlying reactive layer for obstacle avoidance.
 They also do so in the same way as they do without the traffic lights enabled.
 Traffic lights have the only purpose of regulating traffic flow by limiting its direction and changing it at fixed intervals.
 
-Regarding complexity, it can be increased by allowing the cars to turn in order to reach any destination, or we can use a simpler system where cars only wish to reach the opposite destination, going straight.
+Regarding complexity, it can be increased by allowing the cars to turn in order to reach any destination, or we can use a simpler system where cars only try to reach the opposite destination, going straight.
 
 The car speed is changed between three base cases: slow ( 30 km/h), medium (40 km/h) and fast (60 km/h).
-For comparison, it is worth mentioning that the advised speed when making a 90 degree turn inside urban areas is around or below 30 km/h. \textbf{a reference would be nice} %todo find reference
+For comparison, it is worth mentioning that the advised speed when making a 90 degree turn inside urban areas is around or below 30 km/h. %\textbf{a reference would be nice} %todo find reference
 
 When simulating with traffic lights enabled, we test two intervals of time that regulate the duration of the green light.
 We have an interval window of approximately 1 minute, that reflects a realistic scenario according to our observation of real life intersections.
@@ -142,8 +142,9 @@ If the cars can turn in any direction it is even more likely due to the fact tha
 Another interesting aspect to discuss is that the deadlock frequency seems to follow a v-shaped pattern.
 This basically means that the frequency is higher at low and high speeds then it is at medium speed.
 
-We can interpret this as the fact that slow cars are slower to move out of the way and can deadlock faster.
-Fast cars are faster to move out of the way, but also to reach for a position where they can potentially block others when the center is crowded.
+We can interpret this as the fact that slow cars are slower to move out of the intersection, which can become crowded faster as agents take more time to leave.
+
+Fast cars on the other hand occupy the intersection zone for less time, but they can also react faster to openings in crowded spaces and hence occupy someone else's position, blocking the way. 
 \newline
 
 Finally, one may wonder how deadlocks can happen in traffic-light regulated intersections if cars can only go straight.
@@ -176,8 +177,8 @@ Figure \ref{fig:collisions} shows the number of collisions happening per minute 
 These graphs have the same scale as the ones representing the frequency of deadlocks.
 At a quick glance, it is immediately visible that collisions are much less frequent than deadlocks.
 Also, when cars can turn there is a visible correlation with speed and number of collisions, especially in regulated systems.
-We already discussed that cars moving very fast don't have enough brake distance to stop before a red light, and keeps going.
-This behaviour can cause collisions as well as deadlocks when the collision avoidance fails due to particular timings or velocities before impact.
+We already discussed that cars moving very fast don't have enough brake distance to stop before a red light, and keep going.
+This behaviour can cause collisions as well as deadlocks when the collision avoidance fails due to particular timings, angles or velocities before impact.
 
 
 \begin{figure}
