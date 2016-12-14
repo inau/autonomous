@@ -97,13 +97,14 @@ Once we reached the test phase we also realised that we needed to change measure
 
 We translated our cars to being of a fixed size in meters, and based all the other units according to this value. 
 This ratio was not arbitrarily chosen, it was based from values in which range cars of that class belong to, namely compact cars.
+
 Compact category covers cars such as Ford Focus, which lengths are between 4.1 and 4.5 meters for hatchbacks and a bit more for sedans, saloons and station wagons.
 The car size is of 0.8 units in the simulation environment (~10 pixel = 1 unit).
-We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
-Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.\\
 
-\noindent
-\textbf{The traffic lights}\\
+We went with 4.4 meters as being the real world value, and hence got a scaling factor of $5.5$.
+Using the scaling factor we also translated the simulated vehicles speeds to km/h, which is quite helpful for the comparisons.
+
+\subsubsection*{The traffic lights}
 This is an attempt to mimic traffic light regulated intersections.
 The lights change at intervals chosen in regards to our experiences with intersections. 
 These values can vary a lot from intersection to intersection - and are highly influenced by traffic flow during the day. 
@@ -129,8 +130,7 @@ This separation makes it simple to develop multiple types of controllers or vehi
 \label{figure:unity_sens}
 \end{figure}
 
-\noindent
-\textbf{The sensors}\\
+\subsubsection*{The sensors}
 Studying autonomous vehicles, such as the Tesla's we realised how much sensing is actually integrated in these marvels.
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
