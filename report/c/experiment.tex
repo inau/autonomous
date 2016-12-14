@@ -10,16 +10,20 @@ To compare performances of the system over different paradigms and with differen
 multiple experimental simulations.
 The factors that we changed over the different tests are from three classes: the regulation, the speed of the cars, and the complexity.
 
+\marginnote{Traffic light parameter}
 For regulation it is meant the use of  a traffic light regulated intersection versus an unregulated intersection (pure reactive).
 It is worth pointing out that when using traffic lights, the agents of the system still make use of their underlying reactive layer for obstacle avoidance.
 They also do so in the same way as they do without the traffic lights enabled.
-Traffic lights have the only purpose of regulating traffic flow by limiting its direction and changing it at fixed intervals.
+Traffic lights have the only purpose of regulating traffic flow by limiting the different agents access to the critical zone and switching it at fixed intervals.\\
 
-Regarding complexity, it can be increased by allowing the cars to turn in order to reach any destination, or we can use a simpler system where cars only try to reach the opposite destination, going straight.
+\marginnote{Navigation complexity parameter}
+Regarding complexity, it can be increased by allowing the cars to turn in order to reach any destination, or we can use a simpler system where cars only try to reach the opposite destination, going straight.\\
 
+\marginnote{Speed parameter}
 The car speed is changed between three base cases: slow ( 30 km/h), medium (40 km/h) and fast (60 km/h).
-For comparison, it is worth mentioning that the advised speed when making a 90 degree turn inside urban areas is around or below 30 km/h. %\textbf{a reference would be nice} %todo find reference
+For comparison, it is worth mentioning that the advised speed when making a 90 degree turn inside urban areas is around or below 30 km/h.\\ %\textbf{a reference would be nice} %todo find reference
 
+\marginnote{Traffic light observation}
 When simulating with traffic lights enabled, we test two intervals of time that regulate the duration of the green light.
 We have an interval window of approximately 1 minute, that reflects a realistic scenario according to our observation of real life intersections.
 We also test a much shorter window of 20 seconds, that should improve performance under the assumptions that:
@@ -29,10 +33,10 @@ We also test a much shorter window of 20 seconds, that should improve performanc
 \end{enumerate}
 
 \subsection{Experimental results}
-
+\marginnote{Experimental measurements}
 We measure performance of the systems mainly in terms of throughput, namely the amount of cars that get through the intersection per minute.\\
 However, we also account for other factors, like the amount of collisions, the amount of deadlock situations, the time at which these occur and the frequency of these events.\\
-\noindent
+\marginnote{Deadlock definition}
 A deadlock is the condition in which cars have been stuck in the intersection zone with no one entering or leaving for a period of time (about 10 seconds). This is represented in figure \ref{fig:deadlock}.\\
 
 \begin{figure}
@@ -43,6 +47,7 @@ A deadlock is the condition in which cars have been stuck in the intersection zo
 \label{fig:deadlock}
 \end{figure}
 \noindent
+\marginnote{Experimental approach}
 To test the implementation of our system we also account for information such as the number of cars spawned, number of cars "lost" (not reaching the correct destination) and the number of cars present in the intersection zone at the occurrence of a deadlock or collision.
 
 
@@ -63,10 +68,11 @@ The graphs in figure \ref{fig:throughput} show the different throughputs of the 
 The graphs are divided by complexity: the first one shows the different throughputs when the cars can only go straight, while in the second one the cars can also make turns.\\
 
 %For each graph, two versions of the same paradigm are compared: one where the agents only go straight and another one where they can turn in any directions.
-
+\marginnote{Experiments}
 For each graph, three regulation approaches are compared: the pure reactive approach, and the two with traffic lights, with light intervals of 60 and 20 seconds respectively.\\
 Finally, for each case multiple tests are ran with cars moving at different speeds, that are represented on the x axis.\\
 
+\marginnote{Results}
 The first thing that can be evinced from the graphs is that when adding complexity, namely the ability to turn, throughput drops in all three cases.\\
 %This can be easily seen in the fact that in every graph the darkest line (cars going straight) is above the lightest one.
 This is mostly due to the fact that deadlocks are produced at a higher rate when turning is enabled, as will be later discussed.
@@ -99,6 +105,7 @@ Figure \ref{fig:deadlocks} shows the occurrence of deadlocks per minute in the v
 Figure \ref{fig:dtime} shows the average time before a deadlock occurs.
 \newline
 
+\marginnote{Results}
 The throughput results alone are not precise indicators of performance of the systems.
 These results only indicate the performance of the system when actively sorting traffic, which doesn't happen when deadlocks occur.
 
@@ -109,7 +116,7 @@ Instead of using standard time windows for the experiments and comparing through
 This approach achieves a better throughput information for the system, but it only represents the throughput when the system works.
 This is why it is not sufficient to represent the performance of the system, hence we also need to look at deadlock information.
 
-
+\marginnote{Interim conclusion}
 It is clear from these graphs (figure \ref{fig:deadlocks}) that when the cars can only go \textbf{forward}, deadlocks are much more frequent in the pure reactive system.
 Not only they happen more, but they are likely to occur in less time.
 
@@ -132,7 +139,7 @@ This is due to the fact that the reactive approach that we are testing, being it
 It is in fact very close to a greedy approach, in which agents (cars) move forward through their path as soon as they have space to do so.
 This is very likely to result in cars getting in the way of other cars without being able to continue, thus blocking the intersection.
 
-
+\marginnote{Resource management}
 It all comes down to shared resource management in a concurrent environment.
 The intersection is the shared resource at any given time, and the cars need to handle the access to it in a way that it is assured that they can leave.
 The more cars are simultaneously in the intersection at a given time, the more likely it is to form a deadlock.
@@ -151,9 +158,11 @@ Finally, one may wonder how deadlocks can happen in traffic-light regulated inte
 Regardless of how infrequently this happens, the value is not zero.
 This can happen in two different ways.
 
+\marginnote{Braking issues}
 First of all, when running at high speeds some cars just can't stop in time at a red traffic light, and will keep going after they surpass it.
 This will have cars traverse the intersection perpendicularly to the direction where the rest of the traffic is flowing, potentially blocking the way.
 
+\marginnote{Clearing the intersection}
 Another reason is that cars can clear the intersection slowly when lights change.
 Traffic lights are switched with an offset of 3 seconds, during which all lights turn red to make sure the intersection is clear once they change back. 
 This offset sometimes is not enough, especially when cars move slowly or the intersection is very crowded.\\

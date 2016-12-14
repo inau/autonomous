@@ -16,9 +16,9 @@ This is a condition that could be easily corrected with a more advanced sensory 
 
 Another case in which collisions were relatively frequent was when cars approached the intersection at high speeds.
 In 1 out of 10 tests, a collision happened in the first minute of the simulation.
-Our system can handle collision avoidance in most cases, but with specific angles of impact and speed there is not enough brake distance to react in time.
-\newline
+Our system can handle collision avoidance in most cases, but with specific angles of impact and speed there is not enough brake distance to react in time.\\
 
+\marginnote{Deadlocks}
 Another shortcoming of our system is the abundant presence of deadlocks.
 This condition is harder to solve, because it is caused by an issue underlying in the structure of the intersection.
 Cars trying to pass through the same space concurrently can easily block each other, especially without a centralised controller that can sort the traffic.
@@ -33,30 +33,31 @@ To improve \textbf{safety} of the system, further improvements of the sensory la
 The current model is rather simplistic in its implementation, especially comparing it to real life car sensor systems.
 More angles and distances can be added to the sensing part, to be sure to include every possible scenario.
 
+\marginnote{Obstacle avoidance}
 On the same topic, also the controller can definitely be extended to handle more advanced situations and establish more rules to follow. 
 A complete navigation system that can also vary the path would be a good starting point for obtaining obstacle avoidance, but it would not be mandatory.
 
-Obstacle avoidance could be also added as part of the current controller, allowing cars to make variations on the navigation graph currently implemented.
-\newline
+Obstacle avoidance could be also added as part of the current controller, allowing cars to make variations on the navigation graph currently implemented.\\
 
+\marginnote{Decentralised lacks info}
 Another very important aspect that needs improving is the handling of \textbf{concurrency} and resulting deadlocks.
 In this issue lies the strength of a centralised controller approach, that can sort out all the traffic with the focused goal of avoiding race conditions and deadlocks.
-
+\marginnote{Maybe hybrid?}
 To achieve this in a decentralised approach, each agent would need to know a lot about the environment, namely the presence, direction and speed of every other agent surrounding it.
 Acting on this information and through a common set of rules, each agent would then proceed with its task in a sorted way.
 
 All of this is hardly achievable without communication.
 
-Computer vision might be one of the technologies up to the task, along with advanced artificial intelligence techniques.
-\newline
+Computer vision might be one of the technologies up to the task, along with advanced artificial intelligence techniques.\\
 
+\marginnote{Roundabouts}
 Another thing that could produce interesting and potentially better results is the use of a different and simpler model, like an intersection with a roundabout.
 Roundabouts remove complexity in the handling of collision avoidance, by making the centre of the intersection not viable and thus eliminating one of the main reasons that produce deadlocks.
 
 In a roundabout based intersection, each car has to check only two directions for collision avoidance, namely its front and its left side when entering.
-Unfortunately we didn't have the time to test this approach during this project, but it would be a very interesting addition to our work.
-\newline
+Unfortunately we didn't have the time to test this approach during this project, but it would be a very interesting addition to our work.\\
 
+\marginnote{Fairness}
 Finally, another source of discussion is traffic distribution and fairness.
 In all of our simulations, traffic was evenly generated from every direction.
 
