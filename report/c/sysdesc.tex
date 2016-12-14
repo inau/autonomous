@@ -137,14 +137,17 @@ This separation makes it simple to develop multiple types of controllers and veh
 \end{figure}
 
 \subsubsection*{The sensors}
+\marginnote{Reference design}
 Studying autonomous vehicles, such as the Teslas we realised how much sensing is actually integrated in these marvels.
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
 
+\marginnote{Hardware investigation}
 We focused on mimicking the frontal sensors and the cross-traffic sensors.
 We investigated the products of a well-known vendor, SICK, which is used by many different companies within the field.
 We mimic 190 degree LMS5xx series for the frontal sensor. This is a sensor which uses lasers. It provides a high degree of precision. It functions in a lot of different conditions and works in the range of 0 to 80 meters\cite{sick}.\\
 
+\marginnote{Sensor implementation}
 In our implementation of the sensors, we work with two main angles: $\alpha$ and $\beta$, where $\alpha$  covers the frontal part of the car and $\beta$ the sides.
 In figure \ref{figure:unity_sens}, the three white lines represent the $\alpha$ width, which is of $\pi/6$ radiants starting from the centre of the car, and are respectively drawn at [$-\alpha/2, 0, \alpha/2$] angles in relation to the front of the car.\\
 Every object detected in this range is considered to be in front of the car.\\
@@ -164,7 +167,7 @@ This was developed incrementally. Initial versions were done using only collisio
 The vision was to have multiple different controllers and be able to hot swap these for the simulation.
 Later versions also included constructs for priority such as the right hand rule and a finer grained distinction between moving objects and their movement in relation to the agent.\\
 
-\marginnote{Sensor representation}
+\marginnote{Sensor value interpretation}
 Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.
 The 180 degree cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
 We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.
