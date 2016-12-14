@@ -124,7 +124,7 @@ We performed experiments with different interval windows.
 \end{figure}
 
 \subsubsection{The Car Model}
-The way the car has been modelled is by using an interface which essentially contains actions such as accelerating, decelerating, braking, and turning left or right.
+The way the car has been modelled is through the use of an interface which essentially contains actions such as accelerating, decelerating, braking, and turning left or right.
 This abstraction simplifies the step of going from a virtual model to a physical one.
 The interface provides loose coupling between the controller and the underlying vehicle implementation.
 This separation makes it simple to develop multiple types of controllers and vehicles.\\
@@ -138,7 +138,7 @@ This separation makes it simple to develop multiple types of controllers and veh
 
 \subsubsection*{The sensors}
 \marginnote{Reference design}
-Studying autonomous vehicles, such as the Teslas we realised how much sensing is actually integrated in these marvels.
+Studying autonomous vehicles, such as the ones from Tesla Motors, we realised how much sensing is actually integrated in these marvels.
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
 
@@ -149,7 +149,7 @@ We mimic 190 degree LMS5xx series for the frontal sensor. This is a sensor which
 
 \marginnote{Sensor implementation}
 In our implementation of the sensors, we work with two main angles: $\alpha$ and $\beta$, where $\alpha$  covers the frontal part of the car and $\beta$ the sides.
-In figure \ref{figure:unity_sens}, the three white lines represent the $\alpha$ width, which is of $\pi/6$ radiants starting from the centre of the car, and are respectively drawn at [$-\alpha/2, 0, \alpha/2$] angles in relation to the front of the car.\\
+In figure \ref{figure:unity_sens}, the three white lines represent the $\alpha$ width, which is of $\pi/6$ radiants, and are respectively drawn at [$-\alpha/2, 0, \alpha/2$] angles in relation to the front of the car.\\
 Every object detected in this range is considered to be in front of the car.\\
 
 The $\beta$ angle is $\pi$ radiants wide, so everything caught between $\alpha$ and $\beta$ is considered to be to the side of the car.
@@ -184,3 +184,8 @@ This is done using the delta distance rather than raw distance.
 For delta distance it is meant the difference between the distance measured at a given time $t$, and the same distance measured at $t-1$. 
 If two vehicles move at the same speed, one in front of the other, their distance is constant and the delta stays zero.
 If the gap closes, the delta gains a negative value and the controller can react by braking. 
+
+Another addition was the introduction of the right-hand rule. In figure \ref{figure:unity_sens} this is represented by the green line leaving from the right side of the cars.
+This is an attempt of prioritising cars that have their right side free, thus reducing impacts caused by "dead angles".
+Even though the sensory layer was able to register the presence of other cars between the $\beta$ range (180 degrees) from the very first versions, this information was poorly exploited by the controller.
+In fact, actions revolving around the front side of the cars was always prioritised, leaving the information about the sides mostly useless.

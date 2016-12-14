@@ -8,18 +8,17 @@ The problem to solve is to go from origin to destination while not colliding wit
 \marginnote{Determining priority}
 In the real world these challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority over the others.\\
 
-Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation, however our starting point is rooted in the way that traffic is handled in Europe where rules are mostly homogenous.\\
-
-The commonalities used are traffic-legislation and intersections.
+Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation.
+However our starting point is rooted in the way that traffic is handled in Europe, where rules are mostly homogenous especially in terms of traffic-legislation and intersection design.\\
 Traffic-legislation contains a set of rules that makes it easy to determine what entity has a higher priority within critical sections (intersections).\\
 Intersections are also designed in such a way that agents have an easier task at assigning priorities. 
 This includes tools such as traffic lights, road markings and/or signs.
 
 \marginnote{Intersection types}
 The intersection models that we are interested in are 4 way cross-intersections both with and without the use of traffic lights.
-This is due to the fact that these types of intersections are the most common ones in our local area. Additionally a smaller intersection still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from or travels to one of the ways.
+This is due to the fact that these types of intersections are the most common ones in our local area. Additionally, a smaller intersection still follows the same rules and can be seen as a 4 way intersection where traffic never arrives from, or travels to, one of the ways.
 
-\subsubsection{Control Paradigms}
+\subsubsection{Control Paradigms and Related Work}
 We use the term agents for robots or other actors moving within an environment.\\
 \marginnote{Theory}
 We use the term environment as being synonymous to the world in which the agent is confined.
@@ -50,7 +49,7 @@ It resides somewhere in the middle where it has abstractions of routines using r
 \input{c/relwork.tex}\\
 
 %In particular we were inspired by \citeauthor{texas}\citep{texas}, which explores the same area as us.\\
-%Additionally, \citeauthor{texas}, define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesful.
+%Additionally, \citeauthor{texas} define certain criteria that need to be met for the interactions between intersection and multiple agents to be deemed succesful.
 %They name properties such as \textit{autonomy for every agent},\textit{realistic sensor models}, \textit{deadlock avoidance},\textit{safety} and \textit{efficiency}, which we adopted into our model.
 
 %They also mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.
