@@ -4,9 +4,8 @@ First we will briefly explain why intersection management is deemed relevant, fo
 \subsubsection{Intersection Management}
 The field of intersection management tries to deal with the challenges arising when trying to organize multiple entities to efficiently pass through a critical zone.\\
 The problem to solve is to go from origin to destination while not colliding with other entities.\\
-
 \marginnote{Determining priority}
-In the real world these challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority over the others.\\
+In the real world these challenges are solved by defining a set of rules and designing the critical zones such that it is trivial to determine from where entities might enter and leave the zone and what entity has priority over the others.\\ 
 
 Different templates exist for solving these tasks efficiently and these templates can differ from nation to nation.
 However our starting point is rooted in the way that traffic is handled in Europe, where rules are mostly homogenous especially in terms of traffic-legislation and intersection design.\\
@@ -54,9 +53,16 @@ It resides somewhere in the middle where it has abstractions of routines using r
 
 %They also mention more properties - such as protocol standardization, low communication complexity and Incremental Deployability, which we deem less important due to our approach.
 
+\begin{figure}[b]
+\centering
+\includegraphics[height=90px]{img/intersection_tl}
+\includegraphics[height=90px]{img/intersection}
+\caption{The simulation environment, with and without traffic lights}
+\label{fig:intersection}
+\end{figure}
+
 \subsection{Problem Statement}
 The previously obtained insights about robot control, intersection management and previous research led us to the following plan of attack:
-
 \begin{quotation}
 The goal is to explore the possibility of building a decentralized system which can guide autonomous cars through intersections. 
 The current research and solutions we have found are focused around centralized systems. 
