@@ -16,9 +16,11 @@ public class DistanceStruct{
 public class Sensors : MonoBehaviour
 {
 	//for debugging distances TODO remove it
+	public float minRadius;
+	public float maxRadius;
+	public float radius = 3.0f;
 	public Vector2[] ds;
 	public enum SensorDirection{LEFT = 0, FRONT = 1, RIGHT = 2 };
-	public float radius = 3.0f;
 	public DistanceStruct[] distances = new DistanceStruct[3];
 	public float[] deltas;
 	public float rightDelta, rightDist;
@@ -204,9 +206,9 @@ public class Sensors : MonoBehaviour
 			ds[i].y=distances[i].dist;
 		}
 
-		radius = 1 + GetComponent<Rigidbody2D> ().velocity.magnitude;
-		if (radius > 3) {
-			radius = 3;
+		radius = minRadius + GetComponent<Rigidbody2D> ().velocity.magnitude;
+		if (radius > maxRadius) {
+			radius = maxRadius;
 		}
 		col.radius = radius;
 
