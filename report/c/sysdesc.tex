@@ -137,8 +137,8 @@ This separation makes it simple to develop multiple types of controllers and veh
 \end{figure}
 
 \subsubsection*{The sensors}
-\marginnote{Reference design}
 Studying autonomous vehicles, such as the ones from Tesla Motors, we realised how much sensing is actually integrated in these marvels.
+\marginnote{Reference design}
 As seen on figure \ref{figure:tesla_sens}, a lot of sensors exist for achieving autonomous control in vehicles.
 The figure is not representative for all autonomous vehicles - but can be seen as a good starting point for understanding the complexity of the vehicles.\\
 
@@ -168,14 +168,13 @@ The vision was to have multiple different controllers and be able to hot swap th
 Later versions also included constructs for priority such as the right hand rule and a finer grained distinction between moving objects and their movement in relation to the agent.\\
 
 \marginnote{Sensor value interpretation}
-Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.
+Due to the simplification of only using one frontal sensor compared to the amount of sensors others might use, we have a finer grained way to interpret the input from this abstraction.\\
 The 180 degree cone is split into zones, which essentially mimics the same division of the frontal senses as seen on figures \ref{figure:tesla_sens} and \ref{figure:unity_sens}.
-We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.
+We took the abstraction further and limited the range of detection based on velocity of the vehicle. The faster it goes the farther it looks ahead.\\
 This reduces the risk of vehicles being overly cautious and stopping in intersections with lots of slow moving vehicles, especially if it is still possible to pass through.
 Additionally the braking distance is not as big at lower velocities - which makes this approach reasonable.\\
 
-\marginnote{Collision avoidance}
-The controller has been reiterated multiple times: initially it was only doing collision avoidance.
+The controller has been reiterated multiple times: initially it was only doing collision avoidance. \marginnote{Collision avoidance}
 This was achieved by acting directly on the frontal sensor values.\\
 The earliest versions only had one threshold. If anything was closer than the given threshold the car would not move.
 While this avoids colliding with anything in front, it does not handle cross-traffic well.\\
